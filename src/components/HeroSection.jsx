@@ -78,7 +78,7 @@ const HeroSection = ({ introPhase, onOpenModal }) => {
           >
             Where strategy
             <br />
-            becomes design.
+            becomes design<span className="font-body">.</span>
           </motion.h1>
         </div>
       </motion.div>

@@ -4,13 +4,13 @@ import { getProjectBySlug, getNextProject } from "../data/projects";
 import { easeOutQuart, staggerContainer, staggerChild } from "../animations/variants";
 import Modal from "./Modal";
 
-const ProjectModal = ({ slug, onClose, onOpenModal }) => {
+const ProjectModal = ({ slug, onClose, onOpenModal, dismissDirection }) => {
   const project = getProjectBySlug(slug);
   const nextProject = project ? getNextProject(project.id) : null;
 
   if (!project) {
     return (
-      <Modal onClose={onClose} title={project.title}>
+      <Modal onClose={onClose} title={project.title} dismissDirection={dismissDirection}>
         <div className="flex items-center justify-center py-24">
           <p className="text-gray-mid text-sm">Project not found.</p>
         </div>

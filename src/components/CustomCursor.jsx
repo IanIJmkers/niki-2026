@@ -5,6 +5,7 @@ const CustomCursor = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
@@ -33,6 +34,7 @@ const CustomCursor = () => {
           'a, button, [data-cursor="pointer"], input, textarea'
         )
       );
+      setIsDark(!!e.target.closest("[data-cursor-dark]"));
     };
 
     document.addEventListener("mousemove", onMove);
@@ -61,7 +63,7 @@ const CustomCursor = () => {
         transition={{ duration: 0.15 }}
       >
         <div
-          className="w-[5px] h-[5px] rounded-full bg-gold"
+          className={`w-[5px] h-[5px] rounded-full ${isDark ? "bg-black" : "bg-gold"}`}
         />
       </motion.div>
 
@@ -73,7 +75,7 @@ const CustomCursor = () => {
         transition={{ duration: 0.2, ease: "easeOut" }}
       >
         <div
-          className="w-[36px] h-[36px] rounded-full border border-gold"
+          className={`w-[36px] h-[36px] rounded-full border ${isDark ? "border-black" : "border-gold"}`}
         />
       </motion.div>
     </>

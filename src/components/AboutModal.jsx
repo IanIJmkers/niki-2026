@@ -1,8 +1,8 @@
 import Modal from "./Modal";
 
-const AboutModal = ({ onClose }) => {
+const AboutModal = ({ onClose, dismissDirection }) => {
   return (
-    <Modal onClose={onClose} title="About — Nikoletta Kalmar">
+    <Modal onClose={onClose} title="About — Nikoletta Kalmar" dismissDirection={dismissDirection}>
       <div className="px-6 md:px-12 lg:px-16 pt-6 pb-20 md:pb-28">
         <p className="text-[9px] tracking-[3px] uppercase text-gray-mid mb-6">
           About

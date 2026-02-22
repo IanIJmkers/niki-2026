@@ -1,10 +1,34 @@
 import { useRef } from "react";
 import { motion, useDragControls } from "framer-motion";
-import { X, Minus, Square } from "lucide-react";
+import { X } from "lucide-react";
 
-const Modal = ({ children, onClose, title = "Untitled" }) => {
+const DISMISS_THRESHOLD = 120;
+const VELOCITY_THRESHOLD = 500;
+
+const modalVariants = {
+  initial: { opacity: 0, y: 40, scale: 0.97 },
+  animate: { opacity: 1, y: 0, scale: 1 },
+  exit: (direction) => ({
+    opacity: 0,
+    y: direction !== 0 ? direction * window.innerHeight : 40,
+    scale: direction !== 0 ? 1 : 0.97,
+  }),
+};
+
+const Modal = ({ children, onClose, title = "Untitled", dismissDirection = 0 }) => {
   const dragControls = useDragControls();
   const constraintsRef = useRef(null);
+
+  const handleDragEnd = (event, info) => {
+    const shouldDismiss =
+      Math.abs(info.offset.y) > DISMISS_THRESHOLD ||
+      Math.abs(info.velocity.y) > VELOCITY_THRESHOLD;
+
+    if (shouldDismiss) {
+      const direction = info.offset.y > 0 ? 1 : -1;
+      onClose(direction);
+    }
+  };
 
   return (
     <>
@@ -29,13 +53,16 @@ const Modal = ({ children, onClose, title = "Untitled" }) => {
         dragListener={false}
         dragMomentum={false}
         dragConstraints={constraintsRef}
-        dragElastic={0}
-        initial={{ opacity: 0, y: 40, scale: 0.97 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 40, scale: 0.97 }}
+        dragElastic={0.3}
+        custom={dismissDirection}
+        variants={modalVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        onDragEnd={handleDragEnd}
       >
-        <div className="w-[92vw] max-w-[1100px] max-h-[92vh] flex flex-col bg-off-white shadow-2xl border border-black/10">
+        <div className="w-[92vw] max-w-[1100px] max-h-[92vh] flex flex-col bg-off-white shadow-2xl border border-black/10" data-cursor-dark>
           {/* Title bar — drag handle */}
           <div
             className="flex items-center justify-between px-3 py-2 bg-gray-light border-b border-black/10 select-none shrink-0"
@@ -49,20 +76,6 @@ const Modal = ({ children, onClose, title = "Untitled" }) => {
               </span>
             </div>
             <div className="flex items-center gap-1">
-              <button
-                className="p-1.5 hover:bg-black/5 transition-colors"
-                aria-label="Minimize"
-                tabIndex={-1}
-              >
-                <Minus size={12} strokeWidth={1.5} className="text-gray-mid" />
-              </button>
-              <button
-                className="p-1.5 hover:bg-black/5 transition-colors"
-                aria-label="Maximize"
-                tabIndex={-1}
-              >
-                <Square size={10} strokeWidth={1.5} className="text-gray-mid" />
-              </button>
               <button
                 onClick={onClose}
                 className="p-1.5 hover:bg-red-500/10 transition-colors group"

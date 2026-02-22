@@ -21,9 +21,13 @@ const HomePage = () => {
 
   // activeModal: null | "about" | "contact" | { type: "project", slug: string }
   const [activeModal, setActiveModal] = useState(null);
+  const [dismissDirection, setDismissDirection] = useState(0);
 
   const openModal = useCallback((modal) => setActiveModal(modal), []);
-  const closeModal = useCallback(() => setActiveModal(null), []);
+  const closeModal = useCallback((direction = 0) => {
+    setDismissDirection(direction);
+    setActiveModal(null);
+  }, []);
 
   // Lock body scroll — fullscreen grid experience
   useEffect(() => {
@@ -51,12 +55,12 @@ const HomePage = () => {
         <CarouselNav />
       </CarouselProvider>
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" custom={dismissDirection}>
         {activeModal === "about" && (
-          <AboutModal key="about" onClose={closeModal} />
+          <AboutModal key="about" onClose={closeModal} dismissDirection={dismissDirection} />
         )}
         {activeModal === "contact" && (
-          <ContactModal key="contact" onClose={closeModal} />
+          <ContactModal key="contact" onClose={closeModal} dismissDirection={dismissDirection} />
         )}
         {modalSlug && (
           <ProjectModal
@@ -64,6 +68,7 @@ const HomePage = () => {
             slug={modalSlug}
             onClose={closeModal}
             onOpenModal={openModal}
+            dismissDirection={dismissDirection}
           />
         )}
       </AnimatePresence>
