@@ -6,7 +6,7 @@ import { CarouselProvider } from "../hooks/useCarousel";
 
 const PHASE_SCHEDULE = {
   globe:    { next: "text",     delay: 1000 },
-  text:     { next: "carousel", delay: 2000 },
+  text:     { next: "carousel", delay: 3000 },
   carousel: { next: "complete", delay: 2800 },
 };
 
