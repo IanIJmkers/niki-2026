@@ -20,6 +20,18 @@ const HeroSection = ({ introPhase }) => {
         />
       </div>
 
+      {/* "Niki" background text — sits between globe and carousel (z-[5]) */}
+      <motion.div
+        className="fixed inset-x-0 top-0 z-[5] flex justify-center pointer-events-none pt-4 md:pt-6 lg:pt-8"
+        initial={{ opacity: skipped ? 1 : 0 }}
+        animate={{ opacity: showNav ? 1 : 0 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+      >
+        <span className="font-gluten text-[clamp(8rem,22vw,20rem)] text-white/90 uppercase leading-none select-none">
+          Niki
+        </span>
+      </motion.div>
+
       {/* Header nav — appears with carousel */}
       <motion.div
         className="fixed inset-x-0 top-0 z-20 pointer-events-none"
@@ -30,9 +42,6 @@ const HeroSection = ({ introPhase }) => {
         <div className="flex justify-between items-center px-4 py-3 md:px-6 md:py-4 lg:px-10 lg:py-5">
           <span className="text-[9px] font-light text-white tracking-[1.5px] uppercase">
             About
-          </span>
-          <span className="text-base md:text-xl lg:text-3xl font-gloved font-normal text-white tracking-[2.5px] md:tracking-[3px] lg:tracking-[4px]">
-            Nikoletta Kalmar
           </span>
           <span className="text-[9px] font-light text-white tracking-[1.5px] uppercase">
             Contact

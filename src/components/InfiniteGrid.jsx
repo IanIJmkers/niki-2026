@@ -16,7 +16,7 @@ const InfiniteGrid = () => {
       e.preventDefault();
       const delta =
         Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
-      nudge(delta / 500);
+      nudge(delta / 300);
     },
     [nudge]
   );

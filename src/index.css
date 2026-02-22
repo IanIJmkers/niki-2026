@@ -3,6 +3,7 @@
 @theme {
   --font-gloved: "Gloved", sans-serif;
   --font-lunette: "Lunette", sans-serif;
+  --font-gluten: "Gluten", cursive;
   --font-body: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial",
     sans-serif;
   --font-mono: "SF Mono", "Fira Code", "Fira Mono", monospace;
@@ -28,6 +29,14 @@
 @font-face {
   font-family: "Lunette";
   src: url("/fonts/Lunette.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gluten";
+  src: url("/fonts/Gluten.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;

@@ -12,8 +12,7 @@ import { projects } from "../data/projects";
 const CarouselContext = createContext(null);
 const N = projects.length;
 
-// Tuned for flat horizontal grid — softer springs, more damping
-const SPRING = { stiffness: 100, damping: 30, mass: 0.5 };
+const SPRING = { stiffness: 300, damping: 35, mass: 0.3 };
 
 export const CarouselProvider = ({ children, introPhase }) => {
   const getInitialPosition = () => {
