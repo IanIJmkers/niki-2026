@@ -27,19 +27,15 @@ export const projects = [
   },
   {
     id: 3,
-    slug: "the-gallery-of-unwanted-things",
-    title: "the gallery of unwanted things",
+    slug: "madame",
+    title: "madame",
     date: "September 2023",
     subtitle: "Conceptual series / 2023",
-    image: "/images/unwanted.webp",
-    hoverImage: "/images/unwanted-hover.webp",
+    image: "/images/madame.webp",
+    hoverImage: "/images/madame-hover.webp",
     gallery: [
-      { id: 1, src: "/images/unwanted-1.webp" },
-      { id: 2, src: "/images/unwanted-2.webp" },
-      { id: 3, src: "/images/unwanted-3.webp" },
-      { id: 4, src: "/images/unwanted-4.webp" },
-      { id: 5, src: "/images/unwanted-5.webp" },
-      { id: 6, src: "/images/unwanted-6.webp" },
+      { id: 1, src: "/images/madame.webp" },
+      { id: 2, src: "/images/madame-hover.webp" },
     ],
   },
   {
@@ -66,6 +62,19 @@ export const projects = [
     gallery: [
       { id: 1, src: "/images/lychee.webp" },
       { id: 2, src: "/images/lychee-hover.webp" },
+    ],
+  },
+  {
+    id: 6,
+    slug: "globe",
+    title: "globe",
+    date: "March 2024",
+    subtitle: "Globe / 2024",
+    image: "/images/globe.webp",
+    hoverImage: "/images/globe-hover.webp",
+    gallery: [
+      { id: 1, src: "/images/globe.webp" },
+      { id: 2, src: "/images/globe-hover.webp" },
     ],
   },
 ];

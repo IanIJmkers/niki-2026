@@ -13,7 +13,7 @@ const HeroSection = ({ introPhase, onOpenModal }) => {
           src="/images/globes.webp"
           alt="Hero background"
           decoding="async"
-          className="absolute top-0 left-0 h-full object-cover -translate-x-[.65%]"
+          className="absolute top-0 left-0 h-full object-cover -translate-x-[.69%]"
           style={{ width: "106%" }}
           initial={{ opacity: skipped ? 0.7 : 0 }}
           animate={{ opacity: 0.7 }}
