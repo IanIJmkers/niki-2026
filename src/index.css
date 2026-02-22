@@ -20,7 +20,9 @@
 
 @font-face {
   font-family: "Gloved";
-  src: url("/fonts/Gloved.otf") format("opentype");
+  src:
+    url("/fonts/Gloved.woff2") format("woff2"),
+    url("/fonts/Gloved.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -28,7 +30,9 @@
 
 @font-face {
   font-family: "Lunette";
-  src: url("/fonts/Lunette.ttf") format("truetype");
+  src:
+    url("/fonts/Lunette.woff2") format("woff2"),
+    url("/fonts/Lunette.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -36,7 +40,9 @@
 
 @font-face {
   font-family: "Gluten";
-  src: url("/fonts/Gluten.ttf") format("truetype");
+  src:
+    url("/fonts/Gluten.woff2") format("woff2"),
+    url("/fonts/Gluten.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
