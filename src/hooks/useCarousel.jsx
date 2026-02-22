@@ -14,7 +14,7 @@ const N = projects.length;
 
 const SPRING = { stiffness: 300, damping: 35, mass: 0.3 };
 
-export const CarouselProvider = ({ children, introPhase }) => {
+export const CarouselProvider = ({ children, introPhase, onOpenModal }) => {
   const getInitialPosition = () => {
     const saved = sessionStorage.getItem("carouselIndex");
     if (saved) {
@@ -95,6 +95,7 @@ export const CarouselProvider = ({ children, introPhase }) => {
         containerRef,
         N,
         introPhase,
+        onOpenModal,
       }}
     >
       {children}

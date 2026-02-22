@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const HeroSection = ({ introPhase }) => {
+const HeroSection = ({ introPhase, onOpenModal }) => {
   const skipped = introPhase === "complete";
   const showText = introPhase === "text";
   const showNav = introPhase === "carousel" || introPhase === "complete";
@@ -40,12 +40,20 @@ const HeroSection = ({ introPhase }) => {
         transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
       >
         <div className="flex justify-between items-center px-4 py-3 md:px-6 md:py-4 lg:px-10 lg:py-5">
-          <span className="text-[9px] font-light text-white tracking-[1.5px] uppercase">
+          <button
+            onClick={() => onOpenModal("about")}
+            className="text-[9px] font-light text-white tracking-[1.5px] uppercase pointer-events-auto hover:opacity-50 transition-opacity"
+            data-cursor="pointer"
+          >
             About
-          </span>
-          <span className="text-[9px] font-light text-white tracking-[1.5px] uppercase">
+          </button>
+          <button
+            onClick={() => onOpenModal("contact")}
+            className="text-[9px] font-light text-white tracking-[1.5px] uppercase pointer-events-auto hover:opacity-50 transition-opacity"
+            data-cursor="pointer"
+          >
             Contact
-          </span>
+          </button>
         </div>
       </motion.div>
 

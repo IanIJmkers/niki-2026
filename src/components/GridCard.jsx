@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { motion, useTransform } from "framer-motion";
 import { useCarousel } from "../hooks/useCarousel";
 
@@ -8,8 +7,7 @@ const CARD_SLIDE_OFFSET_VW = -60;
 const CARD_STAGGER_DELAY = 0.12;
 
 const GridCard = ({ project, index }) => {
-  const navigate = useNavigate();
-  const { springPosition, N, introPhase } = useCarousel();
+  const { springPosition, N, introPhase, onOpenModal } = useCarousel();
   const [isHovered, setIsHovered] = useState(false);
   const [cardWidthVW, setCardWidthVW] = useState(30);
 
@@ -37,8 +35,7 @@ const GridCard = ({ project, index }) => {
   const x = useTransform(offset, (o) => `calc(-50% + ${o * strideVW}vw)`);
 
   const handleClick = () => {
-    sessionStorage.setItem("carouselIndex", String(index));
-    navigate(`/project/${project.slug}`);
+    onOpenModal({ type: "project", slug: project.slug });
   };
 
   const isCarouselPhase = introPhase === "carousel" || introPhase === "complete";

@@ -61,8 +61,7 @@ const CustomCursor = () => {
         transition={{ duration: 0.15 }}
       >
         <div
-          className="w-[5px] h-[5px] rounded-full"
-          style={{ mixBlendMode: "difference", backgroundColor: "#fff" }}
+          className="w-[5px] h-[5px] rounded-full bg-gold"
         />
       </motion.div>
 
@@ -74,8 +73,7 @@ const CustomCursor = () => {
         transition={{ duration: 0.2, ease: "easeOut" }}
       >
         <div
-          className="w-[36px] h-[36px] rounded-full border border-white"
-          style={{ mixBlendMode: "difference" }}
+          className="w-[36px] h-[36px] rounded-full border border-gold"
         />
       </motion.div>
     </>
