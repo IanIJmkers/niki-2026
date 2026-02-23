@@ -25,7 +25,7 @@ const The3rdSpaceLayout = ({ project }) => {
       {/* Description */}
       {project.description && (
         <motion.p
-          className="px-5 md:px-10 lg:px-10 mt-25 mb-25 text-[11px] md:text-xs leading-relaxed text-black/50 max-w-2xl text-center mx-auto italic"
+          className="px-3 md:px-1 lg:px-1 mt-30 mb-30 text-[11px] md:text-[16px] leading-relaxed text-black/50 max-w-2xl text-center mx-auto italic"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -48,25 +48,33 @@ const The3rdSpaceLayout = ({ project }) => {
 
       {/* third-3 */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 mt-10 overflow-hidden"
+        className="px-5 md:px-20 lg:px-30 mt-50 overflow-hidden"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.6, ease: easeOutQuart }}
       >
-        <GalleryMedia item={img3} alt={`${project.title} — 3`} loading="lazy" />
+        <div className="overflow-hidden">
+          <div>
+            <GalleryMedia
+              item={img3}
+              alt={`${project.title} — 3`}
+              loading="lazy"
+            />
+          </div>
+        </div>
       </motion.div>
 
-      {/* third-4 */}
+      {/* third-4
       <motion.div
-        className="px-5 md:px-20 lg:px-30 mt-10 overflow-hidden"
+        className="px-5 md:px-20 lg:px-30 mt-40 overflow-hidden"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.6, ease: easeOutQuart }}
       >
         <GalleryMedia item={img4} alt={`${project.title} — 4`} loading="lazy" />
-      </motion.div>
+      </motion.div> */}
     </>
   );
 };
