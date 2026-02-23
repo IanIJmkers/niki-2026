@@ -98,7 +98,7 @@ const GridCard = ({ project, index }) => {
         </div>
 
         {/* Title + date */}
-        <div className="mt-3">
+        <div className="mt-3 cursor-pointer" onClick={handleClick} data-cursor="pointer">
           <p className="text-[11px] md:text-xs tracking-[2px] uppercase text-white/90 font-light">
             {project.title}
           </p>

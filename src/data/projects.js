@@ -43,7 +43,7 @@ export const projects = [
     slug: "spinal-fracture",
     title: "spinal fracture",
     date: "November 2023",
-    subtitle: "Medical photography / 2023",
+    subtitle: "Mechanical photography / 2023",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat sit amet nibh porta ultricies. Mauris luctus, ipsum quis rhoncus lobortis, velit leo iaculis ipsum, ut voluptate leo mi quis velit. Mauris at scelerisque nunc. Proin rhoncus, arcu sit amet pharetra congue, eros elit viverra tortor, id sollicitudin neque ipsum eu turpis. Praesent tortor leo, rutrum nec tincidunt quis, laoreet commodo metus.",
     image: "/images/spinal.webp",
