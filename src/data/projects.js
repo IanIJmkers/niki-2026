@@ -10,6 +10,10 @@ export const projects = [
     gallery: [
       { id: 1, src: "/images/third.webp" },
       { id: 2, src: "/images/third-hover.webp" },
+      { id: 3, src: "/images/third-1.webp" },
+      { id: 4, src: "/images/third-2.webp" },
+      { id: 5, src: "/images/third-3.webp" },
+      { id: 6, src: "/images/third-4.webp" },
     ],
   },
   {
@@ -58,8 +62,8 @@ export const projects = [
   },
   {
     id: 5,
-    slug: "madame",
-    title: "madame",
+    slug: "madame-fleurine",
+    title: "madame fleurine",
     date: "September 2023",
     subtitle: "Conceptual series / 2023",
     image: "/images/madame.webp",
@@ -71,15 +75,15 @@ export const projects = [
   },
   {
     id: 6,
-    slug: "globe",
-    title: "globe",
-    date: "March 2024",
-    subtitle: "Globe / 2024",
-    image: "/images/globe.webp",
-    hoverImage: "/images/globe-hover.webp",
+    slug: "liminal",
+    title: "liminal",
+    date: "2024",
+    subtitle: "Liminal / 2024",
+    image: "/images/liminal.webp",
+    hoverImage: "/images/liminal-hover.webp",
     gallery: [
-      { id: 1, src: "/images/globe.webp" },
-      { id: 2, src: "/images/globe-hover.webp" },
+      { id: 1, src: "/images/liminal-1.mp4", type: "video" },
+      { id: 2, src: "/images/liminal-2.mp4", type: "video" },
     ],
   },
 ];

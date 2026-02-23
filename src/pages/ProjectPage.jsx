@@ -9,6 +9,7 @@ import {
   staggerChild,
   easeOutQuart,
 } from "../animations/variants";
+import GalleryMedia from "../components/GalleryMedia";
 
 const ProjectPage = () => {
   const { slug } = useParams();
@@ -118,12 +119,10 @@ const ProjectPage = () => {
                 ease: easeOutQuart,
               }}
             >
-              <img
-                src={item.src}
+              <GalleryMedia
+                item={item}
                 alt={`${project.title} — ${index + 1}`}
                 loading="lazy"
-                decoding="async"
-                className="w-full object-cover"
               />
             </motion.div>
           ))}

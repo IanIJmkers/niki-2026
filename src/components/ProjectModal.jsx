@@ -4,6 +4,7 @@ import { ArrowUp, X } from "lucide-react";
 import { getProjectBySlug } from "../data/projects";
 import { easeOutQuart } from "../animations/variants";
 import Modal from "./Modal";
+import GalleryMedia from "./GalleryMedia";
 
 /* Layout pattern: 1 full → 2 side-by-side → repeat */
 const buildRows = (images) => {
@@ -100,12 +101,10 @@ const ProjectModal = ({ slug, onClose, onOpenModal }) => {
                 ease: easeOutQuart,
               }}
             >
-              <img
-                src={item.src}
+              <GalleryMedia
+                item={item}
                 alt={`${project.title} — ${idx + 1}`}
                 loading={idx === 0 ? "eager" : "lazy"}
-                decoding="async"
-                className="w-full object-cover"
               />
             </motion.div>
           ))}
@@ -130,12 +129,10 @@ const ProjectModal = ({ slug, onClose, onOpenModal }) => {
                     ease: easeOutQuart,
                   }}
                 >
-                  <img
-                    src={item.src}
+                  <GalleryMedia
+                    item={item}
                     alt={`${project.title} — ${rowIdx * 2 + colIdx + 1}`}
                     loading={rowIdx === 0 ? "eager" : "lazy"}
-                    decoding="async"
-                    className="w-full object-cover"
                   />
                 </motion.div>
               ))}
