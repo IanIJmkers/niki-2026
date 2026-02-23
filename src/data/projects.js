@@ -44,16 +44,16 @@ export const projects = [
     title: "spinal fracture",
     date: "November 2023",
     subtitle: "Medical photography / 2023",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat sit amet nibh porta ultricies. Mauris luctus, ipsum quis rhoncus lobortis, velit leo iaculis ipsum, ut voluptate leo mi quis velit. Mauris at scelerisque nunc. Proin rhoncus, arcu sit amet pharetra congue, eros elit viverra tortor, id sollicitudin neque ipsum eu turpis. Praesent tortor leo, rutrum nec tincidunt quis, laoreet commodo metus.",
     image: "/images/spinal.webp",
     hoverImage: "/images/spinal-hover.webp",
     gallery: [
-      { id: 1, src: "/images/spinal.webp" },
-      { id: 2, src: "/images/spinal-hover.webp" },
-      { id: 3, src: "/images/spinal-1.webp" },
-      { id: 4, src: "/images/spinal-2.webp" },
-      { id: 5, src: "/images/spinal-3.webp" },
-      { id: 6, src: "/images/spinal-4.webp" },
-      { id: 7, src: "/images/spinal-5.webp" },
+      { id: 1, src: "/images/spinal-1.webp" },
+      { id: 2, src: "/images/spinal-2.webp" },
+      { id: 3, src: "/images/spinal-3.webp" },
+      { id: 4, src: "/images/spinal-4.webp" },
+      { id: 5, src: "/images/spinal-5.webp" },
     ],
   },
   {

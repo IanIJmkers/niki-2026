@@ -36,7 +36,7 @@ const Modal = ({ children, onClose, title = "Untitled" }) => {
           className="w-[92vw] max-w-[1100px] max-h-[92vh] flex flex-col rounded-2xl overflow-hidden border border-white/50 shadow-[0_8px_60px_rgba(0,0,0,0.25)]"
           data-cursor-dark
           style={{
-            background: "rgba(255, 255, 255, 0.85)",
+            background: "rgba(255, 255, 255, 1)",
             backdropFilter: isDragging ? "blur(20px)" : "blur(40px)",
             WebkitBackdropFilter: isDragging ? "blur(20px)" : "blur(40px)",
           }}
