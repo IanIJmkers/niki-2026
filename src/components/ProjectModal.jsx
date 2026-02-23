@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowUp, ArrowRight } from "lucide-react";
 import { getProjectBySlug, getNextProject } from "../data/projects";
 import { easeOutQuart } from "../animations/variants";
 import Modal from "./Modal";
@@ -23,6 +24,7 @@ const buildRows = (images) => {
 };
 
 const ProjectModal = ({ slug, onClose, onOpenModal }) => {
+  const topRef = useRef(null);
   const project = getProjectBySlug(slug);
   const nextProject = project ? getNextProject(project.id) : null;
 
@@ -35,12 +37,15 @@ const ProjectModal = ({ slug, onClose, onOpenModal }) => {
       </Modal>
     );
   }
-
   const hasDescription = !!project.description;
   const rows = hasDescription ? null : buildRows(project.gallery);
 
+  const scrollToTop = () =>
+    topRef.current?.scrollIntoView({ behavior: "smooth" });
+
   return (
     <Modal onClose={onClose} title={project.title}>
+      <div ref={topRef} />
       {hasDescription ? (
         <>
           {/* Centered title */}
@@ -158,9 +163,21 @@ const ProjectModal = ({ slug, onClose, onOpenModal }) => {
         </>
       )}
 
+      {/* Back to top */}
+      <div className="flex justify-center py-8 md:py-12">
+        <button
+          onClick={scrollToTop}
+          className="flex items-center gap-2 text-[9px] tracking-[3px] uppercase text-black/30 hover:text-black/60 transition-colors"
+          data-cursor="pointer"
+        >
+          <ArrowUp size={12} strokeWidth={1.5} />
+          Back to top
+        </button>
+      </div>
+
       {/* Next project footer */}
       {nextProject && (
-        <div className="mt-2 md:mt-3 border-t border-black/10">
+        <div className="border-t border-black/10">
           <button
             onClick={() =>
               onOpenModal({ type: "project", slug: nextProject.slug })
