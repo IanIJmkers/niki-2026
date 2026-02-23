@@ -49,6 +49,11 @@ export const projects = [
     gallery: [
       { id: 1, src: "/images/spinal.webp" },
       { id: 2, src: "/images/spinal-hover.webp" },
+      { id: 3, src: "/images/spinal-1.webp" },
+      { id: 4, src: "/images/spinal-2.webp" },
+      { id: 5, src: "/images/spinal-3.webp" },
+      { id: 6, src: "/images/spinal-4.webp" },
+      { id: 7, src: "/images/spinal-5.webp" },
     ],
   },
   {
