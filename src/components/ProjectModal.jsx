@@ -4,15 +4,15 @@ import { getProjectBySlug, getNextProject } from "../data/projects";
 import { easeOutQuart, staggerContainer, staggerChild } from "../animations/variants";
 import Modal from "./Modal";
 
-const ProjectModal = ({ slug, onClose, onOpenModal, dismissDirection }) => {
+const ProjectModal = ({ slug, onClose, onOpenModal }) => {
   const project = getProjectBySlug(slug);
   const nextProject = project ? getNextProject(project.id) : null;
 
   if (!project) {
     return (
-      <Modal onClose={onClose} title={project.title} dismissDirection={dismissDirection}>
+      <Modal onClose={onClose} title="Not found">
         <div className="flex items-center justify-center py-24">
-          <p className="text-gray-mid text-sm">Project not found.</p>
+          <p className="text-black/40 text-sm">Project not found.</p>
         </div>
       </Modal>
     );
@@ -46,7 +46,7 @@ const ProjectModal = ({ slug, onClose, onOpenModal, dismissDirection }) => {
         animate="animate"
       >
         <motion.p
-          className="text-[9px] tracking-[3px] uppercase text-gray-mid mb-4"
+          className="text-[9px] tracking-[3px] uppercase text-black/40 mb-4"
           variants={staggerChild}
         >
           {project.subtitle}
@@ -58,7 +58,7 @@ const ProjectModal = ({ slug, onClose, onOpenModal, dismissDirection }) => {
           {project.title}
         </motion.h1>
         <motion.p
-          className="text-[10px] text-gray-mid tracking-[1px]"
+          className="text-[10px] text-black/40 tracking-[1px]"
           variants={staggerChild}
         >
           {project.date}
@@ -97,25 +97,25 @@ const ProjectModal = ({ slug, onClose, onOpenModal, dismissDirection }) => {
 
       {/* Next project */}
       {nextProject && (
-        <div className="border-t border-gray-border">
+        <div className="border-t border-black/10">
           <button
             onClick={() => onOpenModal({ type: "project", slug: nextProject.slug })}
-            className="w-full text-left px-6 md:px-12 lg:px-16 py-14 md:py-20 hover:bg-gray-light/50 transition-colors duration-500"
+            className="w-full text-left px-6 md:px-12 lg:px-16 py-14 md:py-20 hover:bg-black/5 transition-colors duration-500"
             data-cursor="pointer"
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-[9px] tracking-[3px] uppercase text-gray-mid mb-3">
+                <p className="text-[9px] tracking-[3px] uppercase text-black/40 mb-3">
                   Next Project
                 </p>
                 <h3 className="text-lg md:text-xl lg:text-2xl font-normal uppercase tracking-[2px] text-black">
                   {nextProject.title}
                 </h3>
-                <p className="mt-2 text-[10px] text-gray-mid tracking-[1px]">
+                <p className="mt-2 text-[10px] text-black/40 tracking-[1px]">
                   {nextProject.subtitle}
                 </p>
               </div>
-              <ArrowRight size={20} strokeWidth={1} className="text-gray-mid" />
+              <ArrowRight size={20} strokeWidth={1} className="text-black/40" />
             </div>
           </button>
         </div>

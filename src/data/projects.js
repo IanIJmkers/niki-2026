@@ -27,15 +27,15 @@ export const projects = [
   },
   {
     id: 3,
-    slug: "madame",
-    title: "madame",
-    date: "September 2023",
-    subtitle: "Conceptual series / 2023",
-    image: "/images/madame.webp",
-    hoverImage: "/images/madame-hover.webp",
+    slug: "lychee-or-not",
+    title: "lychee or not",
+    date: "January 2024",
+    subtitle: "A botanical exploration / 2024",
+    image: "/images/lychee.webp",
+    hoverImage: "/images/lychee-hover.webp",
     gallery: [
-      { id: 1, src: "/images/madame.webp" },
-      { id: 2, src: "/images/madame-hover.webp" },
+      { id: 1, src: "/images/lychee.webp" },
+      { id: 2, src: "/images/lychee-hover.webp" },
     ],
   },
   {
@@ -53,15 +53,15 @@ export const projects = [
   },
   {
     id: 5,
-    slug: "lychee-or-not",
-    title: "lychee or not",
-    date: "January 2024",
-    subtitle: "A botanical exploration / 2024",
-    image: "/images/lychee.webp",
-    hoverImage: "/images/lychee-hover.webp",
+    slug: "madame",
+    title: "madame",
+    date: "September 2023",
+    subtitle: "Conceptual series / 2023",
+    image: "/images/madame.webp",
+    hoverImage: "/images/madame-hover.webp",
     gallery: [
-      { id: 1, src: "/images/lychee.webp" },
-      { id: 2, src: "/images/lychee-hover.webp" },
+      { id: 1, src: "/images/madame.webp" },
+      { id: 2, src: "/images/madame-hover.webp" },
     ],
   },
   {
@@ -79,8 +79,7 @@ export const projects = [
   },
 ];
 
-export const getProjectBySlug = (slug) =>
-  projects.find((p) => p.slug === slug);
+export const getProjectBySlug = (slug) => projects.find((p) => p.slug === slug);
 
 export const getProjectsExcluding = (excludeId) =>
   projects.filter((p) => p.id !== excludeId);

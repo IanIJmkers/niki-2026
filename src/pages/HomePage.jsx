@@ -9,25 +9,21 @@ import ContactModal from "../components/ContactModal";
 import { CarouselProvider } from "../hooks/useCarousel";
 
 const PHASE_SCHEDULE = {
-  globe:    { next: "text",     delay: 1000 },
-  text:     { next: "carousel", delay: 3000 },
-  carousel: { next: "complete", delay: 2800 },
+  globe: { next: "text", delay: 800 },
+  text: { next: "carousel", delay: 2500 },
+  carousel: { next: "complete", delay: 1800 },
 };
 
 const HomePage = () => {
   const [introPhase, setIntroPhase] = useState(() =>
-    sessionStorage.getItem("carouselIndex") ? "complete" : "globe"
+    sessionStorage.getItem("carouselIndex") ? "complete" : "globe",
   );
 
   // activeModal: null | "about" | "contact" | { type: "project", slug: string }
   const [activeModal, setActiveModal] = useState(null);
-  const [dismissDirection, setDismissDirection] = useState(0);
 
   const openModal = useCallback((modal) => setActiveModal(modal), []);
-  const closeModal = useCallback((direction = 0) => {
-    setDismissDirection(direction);
-    setActiveModal(null);
-  }, []);
+  const closeModal = useCallback(() => setActiveModal(null), []);
 
   // Lock body scroll — fullscreen grid experience
   useEffect(() => {
@@ -55,12 +51,12 @@ const HomePage = () => {
         <CarouselNav />
       </CarouselProvider>
 
-      <AnimatePresence mode="wait" custom={dismissDirection}>
+      <AnimatePresence mode="wait">
         {activeModal === "about" && (
-          <AboutModal key="about" onClose={closeModal} dismissDirection={dismissDirection} />
+          <AboutModal key="about" onClose={closeModal} />
         )}
         {activeModal === "contact" && (
-          <ContactModal key="contact" onClose={closeModal} dismissDirection={dismissDirection} />
+          <ContactModal key="contact" onClose={closeModal} />
         )}
         {modalSlug && (
           <ProjectModal
@@ -68,7 +64,6 @@ const HomePage = () => {
             slug={modalSlug}
             onClose={closeModal}
             onOpenModal={openModal}
-            dismissDirection={dismissDirection}
           />
         )}
       </AnimatePresence>

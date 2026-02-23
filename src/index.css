@@ -68,6 +68,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   min-height: 100vh;
+  min-height: 100dvh;
   color: #000;
   background: var(--color-off-white);
 }
@@ -75,6 +76,7 @@ body {
 body.carousel-active {
   overflow: hidden;
   height: 100vh;
+  height: 100dvh;
   background: #000;
 }
 

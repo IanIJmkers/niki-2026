@@ -10,10 +10,10 @@ const CustomCursor = () => {
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
 
-  const dotX = useSpring(cursorX, { stiffness: 500, damping: 28, mass: 0.5 });
-  const dotY = useSpring(cursorY, { stiffness: 500, damping: 28, mass: 0.5 });
-  const ringX = useSpring(cursorX, { stiffness: 150, damping: 20, mass: 0.8 });
-  const ringY = useSpring(cursorY, { stiffness: 150, damping: 20, mass: 0.8 });
+  const dotX = useSpring(cursorX, { stiffness: 1000, damping: 50, mass: 0.2 });
+  const dotY = useSpring(cursorY, { stiffness: 1000, damping: 50, mass: 0.2 });
+  const ringX = useSpring(cursorX, { stiffness: 400, damping: 30, mass: 0.4 });
+  const ringY = useSpring(cursorY, { stiffness: 400, damping: 30, mass: 0.4 });
 
   useEffect(() => {
     if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
@@ -31,8 +31,8 @@ const CustomCursor = () => {
     const onOver = (e) => {
       setIsHovering(
         !!e.target.closest(
-          'a, button, [data-cursor="pointer"], input, textarea'
-        )
+          'a, button, [data-cursor="pointer"], input, textarea',
+        ),
       );
       setIsDark(!!e.target.closest("[data-cursor-dark]"));
     };
