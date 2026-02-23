@@ -129,7 +129,7 @@ const ProjectPage = () => {
         </div>
       </div>
 
-      {/* Next project */}
+      {/* Footer */}
       {nextProject && (
         <motion.div
           className="border-t border-gray-border"

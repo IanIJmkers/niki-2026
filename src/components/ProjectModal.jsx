@@ -4,25 +4,7 @@ import { ArrowUp, X } from "lucide-react";
 import { getProjectBySlug } from "../data/projects";
 import { easeOutQuart } from "../animations/variants";
 import Modal from "./Modal";
-import GalleryMedia from "./GalleryMedia";
-
-/* Layout pattern: 1 full → 2 side-by-side → repeat */
-const buildRows = (images) => {
-  const rows = [];
-  let i = 0;
-  let full = true;
-  while (i < images.length) {
-    if (full || i + 1 >= images.length) {
-      rows.push([images[i]]);
-      i += 1;
-    } else {
-      rows.push([images[i], images[i + 1]]);
-      i += 2;
-    }
-    full = !full;
-  }
-  return rows;
-};
+import { projectLayouts } from "./layouts";
 
 const ProjectModal = ({ slug, onClose, onOpenModal }) => {
   const topRef = useRef(null);
@@ -37,8 +19,7 @@ const ProjectModal = ({ slug, onClose, onOpenModal }) => {
       </Modal>
     );
   }
-  const hasDescription = !!project.description;
-  const rows = hasDescription ? null : buildRows(project.gallery);
+  const Layout = projectLayouts[project.slug];
 
   const scrollToTop = () =>
     topRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -85,61 +66,8 @@ const ProjectModal = ({ slug, onClose, onOpenModal }) => {
         )}
       </div>
 
-      {/* Gallery */}
-      {hasDescription ? (
-        <div className="px-5 md:px-20 lg:px-30 pb-0 flex flex-col gap-4 md:gap-18">
-          {project.gallery.map((item, idx) => (
-            <motion.div
-              key={item.id}
-              className="overflow-hidden"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{
-                duration: 0.6,
-                delay: idx * 0.05,
-                ease: easeOutQuart,
-              }}
-            >
-              <GalleryMedia
-                item={item}
-                alt={`${project.title} — ${idx + 1}`}
-                loading={idx === 0 ? "eager" : "lazy"}
-              />
-            </motion.div>
-          ))}
-        </div>
-      ) : (
-        <div className="px-5 md:px-10 lg:px-14 pb-0 flex flex-col gap-2 md:gap-3">
-          {rows.map((row, rowIdx) => (
-            <div
-              key={rowIdx}
-              className={`flex flex-col ${row.length === 2 ? "md:flex-row" : ""} gap-2 md:gap-3`}
-            >
-              {row.map((item, colIdx) => (
-                <motion.div
-                  key={item.id}
-                  className={`overflow-hidden ${row.length === 2 ? "md:w-1/2" : "w-full"}`}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{
-                    duration: 0.6,
-                    delay: colIdx * 0.08,
-                    ease: easeOutQuart,
-                  }}
-                >
-                  <GalleryMedia
-                    item={item}
-                    alt={`${project.title} — ${rowIdx * 2 + colIdx + 1}`}
-                    loading={rowIdx === 0 ? "eager" : "lazy"}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          ))}
-        </div>
-      )}
+      {/* Gallery — per-project layout */}
+      <Layout project={project} />
 
       {/* Footer actions */}
       <div className="flex items-center justify-center gap-6 py-8 md:py-12">
