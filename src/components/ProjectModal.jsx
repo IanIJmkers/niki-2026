@@ -54,16 +54,6 @@ const ProjectModal = ({ slug, onClose, onOpenModal }) => {
         >
           {project.date}
         </motion.p>
-        {project.description && (
-          <motion.p
-            className="mt-16 mb-10 text-[11px] md:text-xs leading-relaxed text-black/50 max-w-2xl text-center mx-auto"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2, ease: easeOutQuart }}
-          >
-            {project.description}
-          </motion.p>
-        )}
       </div>
 
       {/* Gallery — per-project layout */}

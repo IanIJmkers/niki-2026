@@ -5,15 +5,15 @@ export const projects = [
     title: "the 3rd space",
     date: "March 2023",
     subtitle: "Architectural study / 2023",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat sit amet nibh porta ultricies. Mauris luctus, ipsum quis rhoncus lobortis, velit leo iaculis ipsum, ut voluptate leo mi quis velit. Mauris at scelerisque nunc. Proin rhoncus, arcu sit amet pharetra congue, eros elit viverra tortor, id sollicitudin neque ipsum eu turpis. Praesent tortor leo, rutrum nec tincidunt quis, laoreet commodo metus.",
     image: "/images/third.webp",
     hoverImage: "/images/third-hover.webp",
     gallery: [
-      { id: 1, src: "/images/third.webp" },
-      { id: 2, src: "/images/third-hover.webp" },
-      { id: 3, src: "/images/third-1.webp" },
-      { id: 4, src: "/images/third-2.webp" },
-      { id: 5, src: "/images/third-3.webp" },
-      { id: 6, src: "/images/third-4.webp" },
+      { id: 1, src: "/images/third-1.webp" },
+      { id: 2, src: "/images/third-2.webp" },
+      { id: 3, src: "/images/third-3.webp" },
+      { id: 4, src: "/images/third-4.webp" },
     ],
   },
   {
@@ -90,15 +90,7 @@ export const projects = [
 
 export const getProjectBySlug = (slug) => projects.find((p) => p.slug === slug);
 
-export const getProjectsExcluding = (excludeId) =>
-  projects.filter((p) => p.id !== excludeId);
-
 export const getNextProject = (currentId) => {
   const i = projects.findIndex((p) => p.id === currentId);
   return projects[(i + 1) % projects.length];
-};
-
-export const getPrevProject = (currentId) => {
-  const i = projects.findIndex((p) => p.id === currentId);
-  return projects[(i - 1 + projects.length) % projects.length];
 };

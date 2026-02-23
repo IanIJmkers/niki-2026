@@ -23,7 +23,19 @@ const LiminalLayout = ({ project }) => {
   const rows = buildRows(project.gallery);
 
   return (
-    <div className="mt-20 px-5 md:px-20 lg:px-30 pb-0 flex flex-col gap-4 md:gap-30">
+    <>
+      {project.description && (
+        <motion.p
+          className="px-5 md:px-20 lg:px-30 mt-16 mb-10 text-[11px] md:text-xs leading-relaxed text-black/50 max-w-2xl text-center mx-auto"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: easeOutQuart }}
+        >
+          {project.description}
+        </motion.p>
+      )}
+      <div className="mt-20 px-5 md:px-20 lg:px-30 pb-0 flex flex-col gap-4 md:gap-30">
       {rows.map((row, rowIdx) => (
         <div
           key={rowIdx}
@@ -51,7 +63,8 @@ const LiminalLayout = ({ project }) => {
           ))}
         </div>
       ))}
-    </div>
+      </div>
+    </>
   );
 };
 
