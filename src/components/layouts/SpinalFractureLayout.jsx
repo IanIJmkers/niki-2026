@@ -6,7 +6,7 @@ const SpinalFractureLayout = ({ project }) => (
   <>
     {project.description && (
       <motion.p
-        className="px-5 md:px-10 lg:px-10 mt-16 mb-10 text-[11px] md:text-xs leading-relaxed text-black/50 max-w-2xl text-center mx-auto"
+        className="px-3 md:px-1 lg:px-1 mt-25 mb-25 text-[11px] md:text-[16px] leading-relaxed text-black/50 max-w-2xl text-center mx-auto italic"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

@@ -56,7 +56,7 @@ const LiminalLayout = ({ project }) => {
         {/* Description */}
         {project.description && (
           <motion.p
-            className="px-3 md:px-1 lg:px-1 mt-30 mb-15 text-[11px] md:text-[16px] leading-relaxed text-black/50 max-w-2xl text-center mx-auto italic"
+            className="px-3 md:px-1 lg:px-1 mt-25 mb-25 text-[11px] md:text-[16px] leading-relaxed text-black/50 max-w-2xl text-center mx-auto italic"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
