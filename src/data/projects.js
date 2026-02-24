@@ -22,11 +22,17 @@ export const projects = [
     title: "spoiled",
     date: "June 2023",
     subtitle: "Fashion editorial / 2023",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat sit amet nibh porta ultricies. Mauris luctus, ipsum quis rhoncus lobortis, velit leo iaculis ipsum, ut voluptate leo mi quis velit. Mauris at scelerisque nunc. Proin rhoncus, arcu sit amet pharetra congue, eros elit viverra tortor, id sollicitudin neque ipsum eu turpis. Praesent tortor leo, rutrum nec tincidunt quis, laoreet commodo metus.",
     image: "/images/spoiled.webp",
     hoverImage: "/images/spoiled-hover.webp",
     gallery: [
       { id: 1, src: "/images/spoiled.webp" },
-      { id: 2, src: "/images/spoiled-hover.webp" },
+      { id: 2, src: "/images/spoiled-1.webp" },
+      { id: 3, src: "/images/spoiled-2.webp" },
+      { id: 4, src: "/images/spoiled-3.webp" },
+      { id: 5, src: "/images/spoiled-4.webp" },
+      { id: 6, src: "/images/spoiled-5.webp" },
     ],
   },
   {
