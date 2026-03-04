@@ -23,13 +23,13 @@ const HeroSection = ({ introPhase, onOpenModal }) => {
 
       {/* "Niki" background text — sits between globe and carousel (z-[5]) */}
       <motion.div
-        className="fixed inset-x-0 top-0 z-[5] flex justify-center pointer-events-none -translate-y-[6%]"
+        className="fixed inset-x-0 top-0 z-[5] flex justify-center pointer-events-none -translate-y-[40%]"
         initial={{ opacity: skipped ? 1 : 0 }}
         animate={{ opacity: showNav ? 1 : 0 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
         <img
-          src="/images/niki-logo.webp"
+          src="/images/niki-logo-text-white.webp"
           alt="Niki"
           decoding="async"
           className="w-[clamp(24rem,56vw,60rem)] select-none"
