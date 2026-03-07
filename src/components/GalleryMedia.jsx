@@ -19,13 +19,13 @@ const GalleryMedia = ({ item, alt, loading = "lazy", clickToPlay = false }) => {
       };
 
       return (
-        <div className="relative cursor-pointer" onClick={handleClick}>
+        <div className="relative cursor-pointer overflow-hidden" onClick={handleClick}>
           <video
             ref={videoRef}
             src={item.src}
             playsInline
             preload="metadata"
-            className="w-full object-cover"
+            className={`w-full object-cover ${item.className || ""}`}
             onEnded={() => setPlaying(false)}
           />
           {!playing && (

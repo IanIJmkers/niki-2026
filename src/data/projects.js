@@ -81,8 +81,11 @@ export const projects = [
     image: "/images/madame.webp",
     hoverImage: "/images/madame-hover.webp",
     gallery: [
-      { id: 1, src: "/images/madame.webp" },
-      { id: 2, src: "/images/madame-hover.webp" },
+      { id: 1, src: "/images/madame-1.webp" },
+      { id: 2, src: "/images/madame-2.webp" },
+      { id: 3, src: "/images/madame-3.webp" },
+      { id: 4, src: "/images/madame-4.webp" },
+      { id: 5, src: "/images/madame-5.webp" },
     ],
   },
   {
@@ -97,7 +100,12 @@ export const projects = [
     hoverImage: "/images/liminal-hover.webp",
     gallery: [
       { id: 1, src: "/images/liminal-1.mp4", type: "video" },
-      { id: 2, src: "/images/liminal-2.mp4", type: "video" },
+      {
+        id: 2,
+        src: "/images/liminal-1-2.mp4?v=2",
+        type: "video",
+        className: "scale-[1.005]",
+      },
     ],
   },
 ];
