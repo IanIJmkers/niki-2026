@@ -32,7 +32,7 @@ const HeroSection = ({ introPhase, onOpenModal }) => {
           src="/images/niki-logo-text-white.webp"
           alt="Niki"
           decoding="async"
-          className="w-[clamp(24rem,56vw,60rem)] select-none"
+          className="w-[clamp(16rem,38vw,42rem)] select-none"
           draggable={false}
         />
       </motion.div>

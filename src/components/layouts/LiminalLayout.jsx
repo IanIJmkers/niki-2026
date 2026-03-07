@@ -47,6 +47,7 @@ const LiminalLayout = ({ project }) => {
                   item={item}
                   alt={`${project.title} — ${rowIdx * 2 + colIdx + 1}`}
                   loading={rowIdx === 0 ? "eager" : "lazy"}
+                  clickToPlay={item.type === "video"}
                 />
               </motion.div>
             ))}
