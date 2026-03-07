@@ -1,9 +1,11 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
 
 @theme {
   --font-gloved: "Gloved", sans-serif;
   --font-lunette: "Lunette", sans-serif;
   --font-gluten: "Gluten", cursive;
+  --font-signature: "Dancing Script", cursive;
   --font-body: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial",
     sans-serif;
   --font-mono: "SF Mono", "Fira Code", "Fira Mono", monospace;

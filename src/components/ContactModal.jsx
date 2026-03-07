@@ -5,7 +5,7 @@ const ContactModal = ({ onClose }) => {
     <Modal onClose={onClose} title="Contact">
       <div className="px-6 md:px-12 lg:px-16 pt-6 pb-20 md:pb-28">
         <p className="text-[9px] tracking-[3px] uppercase text-black/40 mb-6">
-          Get in touch
+          Let's get in touch
         </p>
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-normal uppercase tracking-[2px] text-black mb-10 leading-tight">
           Contact
