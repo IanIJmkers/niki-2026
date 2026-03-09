@@ -28,7 +28,7 @@ const LiminalLayout = ({ project }) => {
         {rows.map((row, rowIdx) => (
           <div
             key={rowIdx}
-            className={`flex flex-col ${row.length === 2 ? "md:flex-row" : ""} gap-2 md:gap-3 ${rowIdx < rows.length - 1 ? "md:mb-50" : ""}`}
+            className={`flex flex-col ${row.length === 2 ? "md:flex-row" : ""} gap-2 md:gap-3 ${rowIdx < rows.length - 1 ? "md:mb-40" : ""}`}
           >
             {row.map((item, colIdx) => (
               <motion.div

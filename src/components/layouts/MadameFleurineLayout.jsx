@@ -3,13 +3,13 @@ import { easeOutQuart } from "../../animations/variants";
 import GalleryMedia from "../GalleryMedia";
 
 const MadameFleurineLayout = ({ project }) => {
-  const [img1, img2, img3, img4, img5] = project.gallery;
+  const [img1, img2, img3, img4, img5, img6] = project.gallery;
 
   return (
     <>
       {/* Row 1 — full-width image 1 */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 mt-40 mb-40 overflow-hidden"
+        className="px-5 md:px-20 lg:px-30 mt-20 mb-40 overflow-hidden"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
@@ -24,7 +24,7 @@ const MadameFleurineLayout = ({ project }) => {
 
       {/* Row 2 — full-width image 2 */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 mb-40 md:mt-3 overflow-hidden"
+        className="px-5 md:px-20 lg:px-30 mb-30 md:mt-3 overflow-hidden"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
@@ -52,18 +52,18 @@ const MadameFleurineLayout = ({ project }) => {
 
       {/* Row 3 — full-width image 3 */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 mt-2 mb-40 md:mt-3 overflow-hidden"
+        className="px-5 md:px-20 lg:px-30 mt-2 mb-20 md:mt-3 overflow-hidden"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.6, ease: easeOutQuart }}
       >
-        <GalleryMedia item={img5} alt={`${project.title} — 5`} loading="lazy" />
+        <GalleryMedia item={img3} alt={`${project.title} — 3`} loading="lazy" />
       </motion.div>
 
       {/* Row 4 — full-width image 4 */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 mb-40 overflow-hidden"
+        className="px-5 md:px-20 lg:px-30 mb-20 overflow-hidden"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
@@ -80,7 +80,7 @@ const MadameFleurineLayout = ({ project }) => {
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.6, ease: easeOutQuart }}
       >
-        <GalleryMedia item={img3} alt={`${project.title} — 3`} loading="lazy" />
+        <GalleryMedia item={img5} alt={`${project.title} — 5`} loading="lazy" />
       </motion.div>
     </>
   );

@@ -44,7 +44,7 @@ const HeroSection = ({ introPhase, onOpenModal }) => {
         animate={{ opacity: showNav ? 1 : 0 }}
         transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
       >
-        <div className="flex justify-between items-center px-4 py-3 md:px-6 md:py-4 lg:px-10 lg:py-5">
+        <div className="flex justify-between items-center mt-3 px-4 py-3 md:px-6 md:py-4 lg:px-10 lg:py-5">
           <button
             onClick={() => onOpenModal("about")}
             className="text-[9px] font-light text-white tracking-[1.5px] uppercase pointer-events-auto hover:opacity-50 transition-opacity"

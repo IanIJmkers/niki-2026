@@ -1,49 +1,48 @@
+import { motion } from "framer-motion";
+import { easeOutQuart } from "../animations/variants";
 import Modal from "./Modal";
+
+const fade = (delay) => ({
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  transition: { duration: 0.8, delay, ease: easeOutQuart },
+});
 
 const ContactModal = ({ onClose }) => {
   return (
     <Modal onClose={onClose} title="Contact">
-      <div className="px-6 md:px-12 lg:px-16 pt-6 pb-20 md:pb-28">
-        <p className="text-[9px] tracking-[3px] uppercase text-black/40 mb-6">
-          Let's get in touch
-        </p>
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-normal uppercase tracking-[2px] text-black mb-10 leading-tight">
-          Contact
-        </h1>
+      <div className="flex flex-col items-center justify-center text-center px-6 py-24 md:py-32 lg:py-40">
+        <motion.p
+          className="text-[9px] tracking-[3px] uppercase text-black/30 mb-10"
+          {...fade(0.1)}
+        >
+          Say hello
+        </motion.p>
 
-        <p className="text-sm md:text-base text-black/60 leading-[1.8] tracking-wide max-w-160 mb-14">
-          For inquiries, collaborations, or just to say hello — feel free to
-          reach out.
-        </p>
+        <motion.a
+          href="mailto:hello@nikolettakalmar.com"
+          className="font-lunette text-2xl md:text-4xl lg:text-5xl text-black/80 tracking-wide hover:text-gold transition-colors duration-500"
+          data-cursor="pointer"
+          {...fade(0.25)}
+        >
+          hello@nikolettakalmar.com
+        </motion.a>
 
-        <div className="space-y-10">
-          <div>
-            <p className="text-[9px] tracking-[3px] uppercase text-black/40 mb-3">
-              Email
-            </p>
-            <a
-              href="mailto:hello@nikolettakalmar.com"
-              className="text-base md:text-lg tracking-[1px] text-black hover:text-black/50 transition-colors duration-300"
-              data-cursor="pointer"
-            >
-              hello@nikolettakalmar.com
-            </a>
-          </div>
-          <div>
-            <p className="text-[9px] tracking-[3px] uppercase text-black/40 mb-3">
-              Instagram
-            </p>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-base md:text-lg tracking-[1px] text-black hover:text-black/50 transition-colors duration-300"
-              data-cursor="pointer"
-            >
-              @nikolettakalmar
-            </a>
-          </div>
-        </div>
+        <motion.div
+          className="w-6 h-px bg-black/10 my-8 md:my-10"
+          {...fade(0.35)}
+        />
+
+        <motion.a
+          href="https://instagram.com/nikolettakalmar"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm tracking-[2px] text-black/30 hover:text-gold transition-colors duration-500"
+          data-cursor="pointer"
+          {...fade(0.45)}
+        >
+          @nikolettakalmar
+        </motion.a>
       </div>
     </Modal>
   );

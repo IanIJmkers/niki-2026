@@ -19,7 +19,7 @@ const SpinalFractureLayout = ({ project }) => (
       {project.gallery.map((item, idx) => (
         <motion.div
           key={item.id}
-          className="overflow-hidden"
+          className={`overflow-hidden ${idx === project.gallery.length - 1 ? "mb-15" : ""}`}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
