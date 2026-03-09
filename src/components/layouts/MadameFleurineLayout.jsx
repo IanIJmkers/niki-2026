@@ -74,13 +74,24 @@ const MadameFleurineLayout = ({ project }) => {
 
       {/* Row 5 — full-width image 5 */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 mt-2 md:mt-3 overflow-hidden mb-15"
+        className="px-5 md:px-20 lg:px-30 mt-2 md:mt-3 overflow-hidden mb-20"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.6, ease: easeOutQuart }}
       >
         <GalleryMedia item={img5} alt={`${project.title} — 5`} loading="lazy" />
+      </motion.div>
+
+      {/* Row 6 — full-width image 6 */}
+      <motion.div
+        className="px-5 md:px-20 lg:px-30 overflow-hidden mb-15"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.6, ease: easeOutQuart }}
+      >
+        <GalleryMedia item={img6} alt={`${project.title} — 6`} loading="lazy" />
       </motion.div>
     </>
   );
