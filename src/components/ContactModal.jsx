@@ -3,7 +3,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import { easeOutQuart } from "../animations/variants";
 import Modal from "./Modal";
 
-const PINK = "#d4a0a0";
+const PINK = "#F8C8DC";
 const CIRCLE_R = 420;
 const CIRCLE_CX = 500;
 const CIRCLE_CY = 500;

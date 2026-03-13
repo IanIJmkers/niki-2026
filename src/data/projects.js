@@ -1,5 +1,3 @@
-import { desc } from "framer-motion/client";
-
 export const projects = [
   {
     id: 1,
@@ -102,8 +100,18 @@ export const projects = [
     displayTitle: "Video Manifesto",
     date: "2024",
     subtitle: "Fragmented Choreography / 2024",
-    description:
-      "This project explores liminality — the transitory state where one exists between understanding and disorientation. It investigates how spaces can submerge us into moments of pause and reflection, unlocking a heightened awareness of our surroundings. At its core, the work examines that precise fragment of sensation before comprehension settles in — when we do not yet understand what is in front of us, and in that uncertainty, a space of transformation and deeper consciousness emerges. Through this lens, liminality situates us within space through bodily reorientation, and simultaneously shapes that space through our ongoing relationship with the objects around us.",
+    description: [
+      "[PROJECT SCRIPT]",
+      "In the dance of existence, humanity finds itself caught in the delicate choreography of liminality—the in-between where boundaries blur, and transformations unfold.",
+      "In a world dictated by constant change, the steps we take in this whirlwind dance, alter our psych. Each move becomes a reflection of our journey in understanding the path ahead.",
+      "Each sequence becomes less about understanding what is right in front of us, but more about making visible what is invisible.",
+      "Each eye-opening instance creates a rhythmic pattern deep within ourselves, and in these moments of self-discovery, we become fragile.",
+      "A single misstep, a slight mistiming, even a change in tempo are moments of vulnerability.",
+      "A moment of vulnerability where our humbled minds are most teachable, and where space becomes a vehicle out of this chaos.",
+      "And ultimately, fabricate our script out of the darkness and into a higher conscience, where we find harmony in this dance.",
+      "The black ink we inscribe onto a canvas, becomes less about the actual inscription and more about the invisible space that populates the canvas.",
+      "In this vulnerable moment, we catch ourselves, not in fear or survival, but in flight, to soar to touch new levels of our psyche.",
+    ],
     image: "/images/liminal.webp",
     hoverImage: "/images/liminal-hover.webp",
     gallery: [

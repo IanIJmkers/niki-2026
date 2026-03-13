@@ -42,12 +42,7 @@ const AboutModal = ({ onClose }) => {
   }, [rawProgress]);
 
   return (
-    <Modal
-      onClose={onClose}
-      title="About — Nikoletta Kalmar"
-      contentRef={contentRef}
-      bg={GOLD}
-    >
+    <Modal onClose={onClose} title="About me" contentRef={contentRef} bg={GOLD}>
       <div className="relative px-6 md:px-12 lg:px-16 overflow-hidden min-h-[80vh] flex flex-col items-start justify-center pt-40">
         {/* Statement header — scrolls up partially */}
         <motion.h1
