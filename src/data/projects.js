@@ -54,6 +54,7 @@ export const projects = [
       { id: 4, src: "/images/madame-4.webp" },
       { id: 5, src: "/images/madame-5.webp" },
       { id: 6, src: "/images/madame-6.webp" },
+      { id: 7, src: "/images/madame.webp" },
     ],
   },
   {
@@ -63,7 +64,7 @@ export const projects = [
     date: "2021",
     subtitle: "Mechanical Surrender / 2021",
     description:
-      "Spinal Fracture is a visualization of a conceptual idea in the shape of a semi-functional sculptural object. The object acts as a brace while mimicking the function of a human spine. This project comments on the dangers of everyday technology, the control technology has, and how a transhuman dystopian future can become more of a reality. The spinal sculpture functions through the use of a coded motor that forces the spine to compress inwards. This action portrays the overarching control technology can have on humanity.",
+      "Spinal Fracture is a visualization of a conceptual idea in the shape of a semi-functional sculptural object. The object acts as a brace while mimicking the function of a human spine. This project comments on the dangers of everyday technology, the control technology has, and how a transhuman dystopian future can become more of a reality. The spinal sculpture functions through the use of a coded motor that forces the spine to compress inwards. This action portrays the overarching control technology can have over humanity.",
     image: "/images/spinal.webp",
     hoverImage: "/images/spinal-hover.webp",
     gallery: [

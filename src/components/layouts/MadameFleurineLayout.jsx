@@ -3,7 +3,7 @@ import { easeOutQuart } from "../../animations/variants";
 import GalleryMedia from "../GalleryMedia";
 
 const MadameFleurineLayout = ({ project }) => {
-  const [img1, img2, img3, img4, img5, img6] = project.gallery;
+  const [img1, img2, img3, img4, img5, img6, img7] = project.gallery;
 
   return (
     <>
@@ -85,13 +85,24 @@ const MadameFleurineLayout = ({ project }) => {
 
       {/* Row 6 — full-width image 6 */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 overflow-hidden mb-15"
+        className="px-5 md:px-20 lg:px-30 overflow-hidden mb-20"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.6, ease: easeOutQuart }}
       >
         <GalleryMedia item={img6} alt={`${project.title} — 6`} loading="lazy" />
+      </motion.div>
+
+      {/* Row 7 — full-width image 7 */}
+      <motion.div
+        className="px-5 md:px-20 lg:px-30 overflow-hidden mb-15"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.6, ease: easeOutQuart }}
+      >
+        <GalleryMedia item={img7} alt={`${project.title} — 7`} loading="lazy" />
       </motion.div>
     </>
   );
