@@ -25,7 +25,7 @@ const ProjectModal = ({ slug, onClose, onOpenModal }) => {
     topRef.current?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <Modal onClose={onClose} title={project.title}>
+    <Modal onClose={onClose} title={project.displayTitle || project.title}>
       <div ref={topRef} />
 
       {/* Project info — shared across all projects */}
@@ -34,7 +34,7 @@ const ProjectModal = ({ slug, onClose, onOpenModal }) => {
           className="text-[9px] tracking-[3px] uppercase text-black/40 mb-3"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.05, ease: easeOutQuart }}
+          transition={{ duration: 0.5, delay: 0.1, ease: easeOutQuart }}
         >
           {project.subtitle}
         </motion.p>
@@ -42,18 +42,10 @@ const ProjectModal = ({ slug, onClose, onOpenModal }) => {
           className="text-2xl md:text-3xl lg:text-4xl font-normal uppercase tracking-[2px] text-black mb-2 leading-tight"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1, ease: easeOutQuart }}
+          transition={{ duration: 0.5, delay: 0.15, ease: easeOutQuart }}
         >
           {project.title}
         </motion.h1>
-        <motion.p
-          className="text-[10px] text-black/40 tracking-[1px]"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15, ease: easeOutQuart }}
-        >
-          {project.date}
-        </motion.p>
       </div>
 
       {/* Gallery — per-project layout */}

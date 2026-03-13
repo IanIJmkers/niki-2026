@@ -1,5 +1,20 @@
 import { useState, useEffect } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
+
+const Sparkle = ({ color }) => (
+  <motion.svg
+    width="36"
+    height="36"
+    viewBox="0 0 100 100"
+    fill={color}
+    initial={{ scale: 0, rotate: 0 }}
+    animate={{ scale: 1, rotate: 180 }}
+    exit={{ scale: 0, rotate: 0 }}
+    transition={{ duration: 0.3, ease: "easeOut" }}
+  >
+    <path d="M50 0 C52 38 62 48 100 50 C62 52 52 62 50 100 C48 62 38 52 0 50 C38 48 48 38 50 0Z" />
+  </motion.svg>
+);
 
 const CustomCursor = () => {
   const [isHovering, setIsHovering] = useState(false);
@@ -51,11 +66,13 @@ const CustomCursor = () => {
 
   if (isTouchDevice) return null;
 
+  const cursorColor = isDark ? "black" : "rgb(233, 229, 160)";
+
   return (
     <>
       <style>{`@media (pointer: fine) { * { cursor: none !important; } }`}</style>
 
-      {/* Dot */}
+      {/* Dot — hidden when hovering */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{ x: dotX, y: dotY, translateX: "-50%", translateY: "-50%" }}
@@ -67,16 +84,36 @@ const CustomCursor = () => {
         />
       </motion.div>
 
-      {/* Ring */}
+      {/* Ring — transforms into sparkle on hover */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9998]"
         style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
-        animate={{ opacity: isVisible ? 1 : 0, scale: isHovering ? 1.5 : 1 }}
+        animate={{ opacity: isVisible ? 1 : 0 }}
         transition={{ duration: 0.2, ease: "easeOut" }}
       >
-        <div
-          className={`w-[36px] h-[36px] rounded-full border ${isDark ? "border-black" : "border-gold"}`}
-        />
+        <AnimatePresence mode="wait">
+          {isHovering ? (
+            <motion.div
+              key="sparkle"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+            >
+              <Sparkle color={cursorColor} />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="ring"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div
+                className={`w-[36px] h-[36px] rounded-full border ${isDark ? "border-black" : "border-gold"}`}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </>
   );

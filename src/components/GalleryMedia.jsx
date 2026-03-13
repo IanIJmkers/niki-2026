@@ -19,7 +19,11 @@ const GalleryMedia = ({ item, alt, loading = "lazy", clickToPlay = false }) => {
       };
 
       return (
-        <div className="relative cursor-pointer overflow-hidden" onClick={handleClick}>
+        <div
+          className="relative cursor-pointer overflow-hidden"
+          onClick={handleClick}
+          {...(item.cursorContrast ? { "data-cursor": "pointer" } : {})}
+        >
           <video
             ref={videoRef}
             src={item.src}

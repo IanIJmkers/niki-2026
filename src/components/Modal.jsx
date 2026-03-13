@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, useDragControls } from "framer-motion";
 import { X } from "lucide-react";
 
-const Modal = ({ children, onClose, title = "Untitled" }) => {
+const Modal = ({ children, onClose, title = "Untitled", contentRef, bg }) => {
   const dragControls = useDragControls();
   const [isDragging, setIsDragging] = useState(false);
 
@@ -36,7 +36,7 @@ const Modal = ({ children, onClose, title = "Untitled" }) => {
           className="w-[92vw] max-w-[1100px] max-h-[92vh] flex flex-col rounded-2xl overflow-hidden border border-white/50 shadow-[0_8px_60px_rgba(0,0,0,0.25)]"
           data-cursor-dark
           style={{
-            background: "rgba(255, 255, 255, 1)",
+            background: bg || "rgba(255, 255, 255, 1)",
             backdropFilter: isDragging ? "blur(20px)" : "blur(40px)",
             WebkitBackdropFilter: isDragging ? "blur(20px)" : "blur(40px)",
           }}
@@ -48,7 +48,10 @@ const Modal = ({ children, onClose, title = "Untitled" }) => {
             style={{ touchAction: "none" }}
             data-cursor="pointer"
           >
-            <span className="text-[10px] tracking-[1.5px] uppercase text-black/40 font-light">
+            <span
+              className="text-[10px] tracking-[1.5px] uppercase text-black/40 font-light"
+              style={{ wordSpacing: "0.3em" }}
+            >
               {title}
             </span>
             <button
@@ -62,7 +65,7 @@ const Modal = ({ children, onClose, title = "Untitled" }) => {
           </div>
 
           {/* Scrollable content */}
-          <div className="overflow-y-auto overscroll-contain flex-1">
+          <div ref={contentRef} className="overflow-y-auto overscroll-contain flex-1">
             {children}
           </div>
         </div>

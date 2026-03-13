@@ -5,10 +5,11 @@ export const projects = [
     id: 1,
     slug: "the-3rd-space",
     title: "the 3rd space",
-    date: "2023",
-    subtitle: "Spatial Dissonance / 2023",
+    displayTitle: "Virtual Experience",
+    date: "2021",
+    subtitle: "Spatial Dissonance / 2021",
     description:
-      "Space is often believed to be a passive construct but the relation(ship) of the individual to the creation of that said space is often overlooked. This three-dimensional object acts as a disorienting tool on an endless plane to force the viewer into reorientation. The individual has to actively negotiate and translate their surroundings in order to better situate oneself. What is the third space, and how does it relate to the extent of our awareness and outlook upon the world? How does this third space potentially look like?",
+      "Space is often believed to be a passive construct but the relation of the individual to the creation of that said space is often overlooked. Positioned in the digital sphere, this screen-based interface invites viewers to where a seemingly static background gradually reveals itself to be an immersive environment. This shift destabilizes perception, creating moments of disorientation as the viewer is pushed to actively negotiate, navigate, and explore their position within the endless plane. Through a 3D modeling system, the work explores what the ‘third-space’ is and how it is a gateway for translation and transformation to occur, provoking a sense of immersion, confusion, and reorientation all at the same time. ",
     image: "/images/third.webp",
     hoverImage: "/images/third-hover.webp",
     gallery: [
@@ -22,10 +23,11 @@ export const projects = [
     id: 2,
     slug: "spoiled",
     title: "spoiled",
+    displayTitle: "speculative publication",
     date: "2020",
-    subtitle: "Consumed Culture / 2020",
+    subtitle: "Dystopian Consumption  / 2020",
     description:
-      "Spoiled is a collaborative project that explores food culture through trend-forecasting with themes of dystopia and the disconnectedness of humanity from nature. The publication's mission is to raise awareness through condensing information surrounding the transformation that affects food through modernization. Through these means we come to the realization that food plays a significant role as a cultural commodity other than simply being a necessity for survival.",
+      "Spoiled is a trend-research based collaborative project that explores the idea of ‘food culture’ in the near future of our fast paced world. The publication takes on a dystopian approach and focuses on the disconnectedness of humanity from nature. Its aim is to bring awareness to how modernisation and globalization affect traditions, values, culture and community around food. Through these means we come to the realization that food plays a significant role as a social commodity other than simply being a necessity for survival.",
     image: "/images/spoiled.webp",
     hoverImage: "/images/spoiled-hover.webp",
     gallery: [
@@ -41,10 +43,11 @@ export const projects = [
     id: 3,
     slug: "madame-fleurine",
     title: "madame fleurine",
+    displayTitle: "Conceptual Design",
     date: "2024",
-    subtitle: "Craft Identity / 2024",
+    subtitle: "Brand Identity / 2024",
     description:
-      "This project marked a pivotal shift in my practice — bridging the gap between creative expression and strategic thinking. Madame Fleurine was a comprehensive packaging and branding project that challenged me to step beyond personal artistic exploration and into the world of client-driven design. It required deep understanding of the business's identity, translating a client's vision into a cohesive visual language across packaging, branding, and marketing materials. Through this process, I learned how to balance creative ambition with commercial purpose — weaving a client's needs, values, and aspirations into designs that not only look compelling but communicate and resonate with their intended audience. Madame Fleurine represents my a full immersion into the strategic and communicative power of design as a professional tool.",
+      "Madame Fleurine was a comprehensive packaging and branding project that challenged me to step beyond personal artistic exploration and into the world of client-driven design. Having the opportunity to work alongside an experienced team of professionals for this project highlighted my strengths and capabilities in the nature of design practice. This project required a deep understanding of the business's identity, translating a client's vision into a cohesive visual language across packaging, branding, and marketing materials. My role involved contributing to the early stages of concept development, brainstorming aesthetics, and visual directions that later evolved into a fully realized design proposal. ",
     image: "/images/madame.webp",
     hoverImage: "/images/madame-hover.webp",
     gallery: [
@@ -61,8 +64,9 @@ export const projects = [
     id: 4,
     slug: "spinal-fracture",
     title: "spinal fracture",
+    displayTitle: "Sculptural Work ",
     date: "2021",
-    subtitle: "Mechanical Surrender / 2021",
+    subtitle: "Mechanical Control / 2021",
     description:
       "Spinal Fracture is a visualization of a conceptual idea in the shape of a semi-functional sculptural object. The object acts as a brace while mimicking the function of a human spine. This project comments on the dangers of everyday technology, the control technology has, and how a transhuman dystopian future can become more of a reality. The spinal sculpture functions through the use of a coded motor that forces the spine to compress inwards. This action portrays the overarching control technology can have over humanity.",
     image: "/images/spinal.webp",
@@ -79,6 +83,7 @@ export const projects = [
     id: 5,
     slug: "lychee-or-not",
     title: "lychee or not",
+    displayTitle: "lychee or not",
     date: "2021",
     subtitle: "Deceptive Materiality / 2021",
     description:
@@ -93,20 +98,26 @@ export const projects = [
   {
     id: 6,
     slug: "liminal",
-    title: "liminal",
+    title: "liminal ballet",
+    displayTitle: "Video Manifesto",
     date: "2024",
-    subtitle: "Threshold Perception / 2024",
+    subtitle: "Fragmented Choreography / 2024",
     description:
       "This project explores liminality — the transitory state where one exists between understanding and disorientation. It investigates how spaces can submerge us into moments of pause and reflection, unlocking a heightened awareness of our surroundings. At its core, the work examines that precise fragment of sensation before comprehension settles in — when we do not yet understand what is in front of us, and in that uncertainty, a space of transformation and deeper consciousness emerges. Through this lens, liminality situates us within space through bodily reorientation, and simultaneously shapes that space through our ongoing relationship with the objects around us.",
     image: "/images/liminal.webp",
     hoverImage: "/images/liminal-hover.webp",
     gallery: [
-      { id: 1, src: "/images/liminal-1.mp4", type: "video" },
       {
-        id: 2,
+        id: 1,
         src: "/images/liminal-1-2.mp4?v=2",
         type: "video",
         className: "scale-[1.005]",
+      },
+      {
+        id: 2,
+        src: "/images/liminal-1.mp4",
+        type: "video",
+        cursorContrast: true,
       },
     ],
   },
