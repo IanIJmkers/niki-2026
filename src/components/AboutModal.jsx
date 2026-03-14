@@ -67,8 +67,8 @@ const AboutModal = ({ onClose }) => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, amount: 0.8 }}
               transition={{
-                duration: 2,
-                delay: 0.3,
+                duration: 0.8,
+                delay: 0.1,
                 ease: [0.25, 1, 0.5, 1],
               }}
             >
@@ -95,8 +95,8 @@ const AboutModal = ({ onClose }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{
-                duration: 0.8,
-                delay: 0.1,
+                duration: 2,
+                delay: 0.3,
                 ease: [0.25, 1, 0.5, 1],
               }}
             />
@@ -111,8 +111,8 @@ const AboutModal = ({ onClose }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{
-                duration: 0.8,
-                delay: 0.15,
+                duration: 2,
+                delay: 0.3,
                 ease: [0.25, 1, 0.5, 1],
               }}
             />

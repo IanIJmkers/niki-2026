@@ -163,7 +163,7 @@ const ContactModal = ({ onClose }) => {
                 </p>
                 <a
                   href="mailto:nikoletta.k.d@gmail.com"
-                  className="block text-[12px] tracking-[1px] text-black/60"
+                  className="block text-[12px] tracking-[1px] text-black/60 italic"
                   data-cursor="pointer"
                 >
                   nikoletta.k.d@gmail.com
@@ -172,7 +172,7 @@ const ContactModal = ({ onClose }) => {
                   href="https://www.linkedin.com/in/nikoletta-kalmar/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-[12px] tracking-[1px] text-black/60 mt-1"
+                  className="block text-[12px] tracking-[1px] text-black/60 mt-1 italic"
                   data-cursor="pointer"
                 >
                   @nikoletta-kalmar
