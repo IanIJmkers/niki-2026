@@ -49,7 +49,7 @@ const AboutModal = ({ onClose }) => {
       {isMobile ? (
         <>
           {/* Mobile: heading + text together */}
-          <div className="relative px-6 min-h-[75vh] flex flex-col justify-center mt-10">
+          <div className="relative px-6 min-h-[75vh] flex flex-col justify-center mt-20">
             <motion.h1
               className="font-lunette text-[7.5rem] uppercase leading-none tracking-wide text-black/90"
               initial={{ opacity: 0, y: 20 }}
@@ -62,13 +62,13 @@ const AboutModal = ({ onClose }) => {
             </motion.h1>
 
             <motion.p
-              className="text-sm text-black/60 leading-[1.8] tracking-wide  max-w-[720px]"
+              className="text-sm text-black/60 leading-[1.8] tracking-wide mt-4 max-w-[720px]"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, amount: 0.8 }}
               transition={{
-                duration: 2.5,
-                delay: 0.4,
+                duration: 2,
+                delay: 0.3,
                 ease: [0.25, 1, 0.5, 1],
               }}
             >
@@ -88,7 +88,7 @@ const AboutModal = ({ onClose }) => {
           {/* Mobile: logo and photo below */}
           <div className="px-6 pb-40">
             <motion.img
-              className="relative mt-4 w-[40%] "
+              className="relative z-10 mt-4 w-[40%]"
               src="/images/niki-logo-text-black.webp"
               alt="Nikoletta"
               initial={{ opacity: 0, y: 15 }}
@@ -102,7 +102,7 @@ const AboutModal = ({ onClose }) => {
             />
 
             <motion.img
-              className="relative -mt-2 w-32 ml-10 rounded-lg object-contain"
+              className="relative z-0 -mt-2 w-32 ml-10 rounded-lg object-contain"
               src="/images/about.webp"
               alt="Nikoletta Kalmar"
               loading="lazy"
