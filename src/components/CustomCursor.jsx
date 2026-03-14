@@ -55,10 +55,19 @@ const CustomCursor = () => {
 
   if (isTouchDevice) return null;
 
-  // On dark backgrounds: show as-is (black sparkle). On light: invert + tint gold.
-  const filterNormal = isDark
-    ? "none"
-    : "invert(88%) sepia(30%) saturate(400%) hue-rotate(10deg) brightness(1.05)";
+  const cursorColor = isDark ? "black" : "rgb(233, 229, 160)";
+
+  const sparkleStyle = {
+    backgroundColor: cursorColor,
+    maskImage: "url(/images/sparkle.png)",
+    maskSize: "contain",
+    maskRepeat: "no-repeat",
+    maskPosition: "center",
+    WebkitMaskImage: "url(/images/sparkle.png)",
+    WebkitMaskSize: "contain",
+    WebkitMaskRepeat: "no-repeat",
+    WebkitMaskPosition: "center",
+  };
 
   return (
     <>
@@ -79,22 +88,18 @@ const CustomCursor = () => {
               exit={{ scale: 0, rotate: 0 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
-              <motion.img
-                src="/images/sparkle.png"
-                alt=""
+              <motion.div
                 className="w-12 h-12"
-                style={{ filter: filterNormal }}
+                style={sparkleStyle}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
               />
             </motion.div>
           ) : (
-            <motion.img
+            <motion.div
               key="default"
-              src="/images/sparkle.png"
-              alt=""
               className="w-10 h-10"
-              style={{ filter: filterNormal }}
+              style={sparkleStyle}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
