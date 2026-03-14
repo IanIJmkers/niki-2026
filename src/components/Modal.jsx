@@ -35,7 +35,7 @@ const Modal = ({ children, onClose, title = "Untitled", contentRef, bg }) => {
         onDragEnd={() => setIsDragging(false)}
       >
         <div
-          className="w-[92vw] max-w-[1100px] max-h-[92vh] flex flex-col rounded-2xl overflow-hidden shadow-[0_8px_60px_rgba(0,0,0,0.25)]"
+          className={`w-[92vw] max-w-[1100px] max-h-[92vh] flex flex-col rounded-2xl shadow-[0_8px_60px_rgba(0,0,0,0.25)] ${isMobile ? "overflow-visible" : "overflow-hidden"}`}
           data-cursor-dark
           style={{
             background: bg || "rgba(255, 255, 255, 1)",

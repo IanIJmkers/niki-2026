@@ -89,102 +89,194 @@ const ContactModal = ({ onClose }) => {
       contentRef={contentRef}
       bg={PINK}
     >
-      <div className="relative h-full min-h-[80vh] flex items-center justify-end">
-        {/* Carousel — shifted to the right */}
-        <motion.svg
-          viewBox="0 0 1000 1000"
-          className="absolute -right-[15%] top-1/2 -translate-y-1/2 w-[90vw] h-[90vw] md:w-275 md:h-275 pointer-events-none"
-          style={{ rotate }}
-        >
-          <defs>
-            <path id="contactCircle" d={circlePath} />
-          </defs>
-          <text
-            className="font-lunette"
-            fill="rgba(0,0,0,0.48)"
-            fontSize="72"
-            letterSpacing="8"
-            textAnchor="start"
+      {isMobile ? (
+        /* Mobile layout — stacked, circle overflows */
+        <div className="relative min-h-[80vh] overflow-visible">
+          {/* Rotating circle — large, bleeds out of modal */}
+          <motion.svg
+            viewBox="0 0 1000 1000"
+            className="absolute -right-[80%] -top-[10%] w-[180vw] h-[180vw] pointer-events-none"
+            style={{ rotate }}
           >
-            <textPath href="#contactCircle">{repeatedParts}</textPath>
-          </text>
-        </motion.svg>
+            <defs>
+              <path id="contactCircle" d={circlePath} />
+            </defs>
+            <text
+              className="font-lunette"
+              fill="rgba(0,0,0,0.48)"
+              fontSize="86"
+              letterSpacing="8"
+              textAnchor="start"
+            >
+              <textPath href="#contactCircle">{repeatedParts}</textPath>
+            </text>
+          </motion.svg>
 
-        {/* Header — positioned at top right */}
-        <motion.p
-          className="absolute top-8 md:top-26 right-4 md:right-28 lg:right-29.5 z-10 font-body text-[11px] md:text-[20px] leading-relaxed tracking-[1px] text-black/50 max-w-xs text-right font-light"
-          {...fade(0.1)}
-        >
-          For any enquiry or just to say hello reach out here!
-        </motion.p>
+          {/* Content — stacked vertically */}
+          <div className="relative z-10 px-6 pt-20 pb-12">
+            <motion.p
+              className="font-body text-[11px] leading-relaxed tracking-[1px] text-black/50 font-light mb-10 text-right"
+              {...fade(0.1)}
+            >
+              For any enquiry
+              <br />
+              or just to say hello
+              <br />
+              reach out here!
+            </motion.p>
 
-        {/* Content — vertically centered, aligned right */}
-        <div className="relative z-10 w-full max-w-xl mr-4 md:mr-28 lg:mr-30 text-right">
-          {/* Divider */}
-          <motion.div className="w-full h-px bg-black/10 mb-8" {...fade(0.2)} />
+            <motion.div
+              className="grid grid-cols-1 gap-6 text-right mt-15"
+              {...fade(0.3)}
+            >
+              <div className="whitespace-nowrap">
+                <p className="text-[8px] tracking-[3px] uppercase text-black/30 mb-3">
+                  Name
+                </p>
+                <p className="text-[12px] tracking-[1px] text-black/60">
+                  Nikoletta Kalmar
+                </p>
+                <p className="text-[12px] tracking-[1px] text-black/60 mt-1">
+                  (Niki)
+                </p>
+              </div>
+              <motion.div
+                className="w-[50%] h-px bg-black/10  ml-auto"
+                {...fade(0.2)}
+              />
 
-          {/* Contact info grid */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-20 w-full text-left"
-            {...fade(0.3)}
-          >
-            {/* Info */}
-            <div className="whitespace-nowrap">
-              <p className="text-[8px] tracking-[3px] uppercase text-black/30 mb-3">
-                Name
-              </p>
-              <p className="text-[10px] md:text-[11px] tracking-[1px] text-black/60">
-                Nikoletta Kalmar
-              </p>
-              <p className="text-[10px] md:text-[11px] tracking-[1px] text-black/60 mt-1">
-                (Niki)
-              </p>
-            </div>
-
-            {/* Location */}
-            <div className="whitespace-nowrap">
-              <p className="text-[8px] tracking-[3px] uppercase text-black/30 mb-3">
-                Info
-              </p>
-              <a
-                href="mailto:nikoletta.k.d@gmail.com"
-                className="block text-[10px] md:text-[11px] tracking-[1px] text-black/60 hover:text-black hover:italic hover:font-bold transition-colors"
-                data-cursor="pointer"
-              >
-                nikoletta.k.d@gmail.com
-              </a>
-              <a
-                href="https://www.linkedin.com/in/nikoletta-kalmar/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-[10px] md:text-[11px] tracking-[1px] text-black/60 hover:text-black hover:italic hover:font-bold transition-colors mt-1"
-                data-cursor="pointer"
-              >
-                @nikoletta-kalmar
-              </a>
-            </div>
-
-            {/* Social */}
-            <div className="whitespace-nowrap">
-              <p className="text-[8px] tracking-[3px] uppercase text-black/30 mb-3">
-                Location
-              </p>
-              <p className="text-[10px] md:text-[11px] tracking-[1px] text-black/60">
-                The Hague
-              </p>
-              <p className="text-[10px] md:text-[11px] tracking-[1px] text-black/60 mt-1">
-                Netherlands
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Divider */}
-          <motion.div
-            className="w-full h-px bg-black/10 mt-8"
-            {...fade(0.35)}
-          />
+              <div className="whitespace-nowrap">
+                <p className="text-[8px] tracking-[3px] uppercase text-black/30 mb-3">
+                  Info
+                </p>
+                <a
+                  href="mailto:nikoletta.k.d@gmail.com"
+                  className="block text-[12px] tracking-[1px] text-black/60"
+                  data-cursor="pointer"
+                >
+                  nikoletta.k.d@gmail.com
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/nikoletta-kalmar/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-[12px] tracking-[1px] text-black/60 mt-1"
+                  data-cursor="pointer"
+                >
+                  @nikoletta-kalmar
+                </a>
+              </div>
+              <motion.div
+                className="w-[50%] h-px bg-black/10  ml-auto"
+                {...fade(0.35)}
+              />
+              <div className="whitespace-nowrap">
+                <p className="text-[8px] tracking-[3px] uppercase text-black/30 mb-3">
+                  Location
+                </p>
+                <p className="text-[12px] tracking-[1px] text-black/60">
+                  The Hague
+                </p>
+                <p className="text-[12px] tracking-[1px] text-black/60 mt-1">
+                  Netherlands
+                </p>
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </div>
+      ) : (
+        /* Desktop layout — original */
+        <div className="relative h-full min-h-[80vh] flex items-center justify-end">
+          <motion.svg
+            viewBox="0 0 1000 1000"
+            className="absolute -right-[15%] top-1/2 -translate-y-1/2 w-275 h-275 pointer-events-none"
+            style={{ rotate }}
+          >
+            <defs>
+              <path id="contactCircle" d={circlePath} />
+            </defs>
+            <text
+              className="font-lunette"
+              fill="rgba(0,0,0,0.48)"
+              fontSize="72"
+              letterSpacing="8"
+              textAnchor="start"
+            >
+              <textPath href="#contactCircle">{repeatedParts}</textPath>
+            </text>
+          </motion.svg>
+
+          <motion.p
+            className="absolute top-26 right-28 lg:right-29.5 z-10 font-body text-[20px] leading-relaxed tracking-[1px] text-black/50 max-w-xs text-right font-light"
+            {...fade(0.1)}
+          >
+            For any enquiry or just to say hello reach out here!
+          </motion.p>
+
+          <div className="relative z-10 w-full max-w-xl mr-28 lg:mr-30 text-right">
+            <motion.div
+              className="w-full h-px bg-black/10 mb-8"
+              {...fade(0.2)}
+            />
+
+            <motion.div
+              className="grid grid-cols-3 gap-20 w-full text-left"
+              {...fade(0.3)}
+            >
+              <div className="whitespace-nowrap">
+                <p className="text-[8px] tracking-[3px] uppercase text-black/30 mb-3">
+                  Name
+                </p>
+                <p className="text-[11px] tracking-[1px] text-black/60">
+                  Nikoletta Kalmar
+                </p>
+                <p className="text-[11px] tracking-[1px] text-black/60 mt-1">
+                  (Niki)
+                </p>
+              </div>
+
+              <div className="whitespace-nowrap">
+                <p className="text-[8px] tracking-[3px] uppercase text-black/30 mb-3">
+                  Info
+                </p>
+                <a
+                  href="mailto:nikoletta.k.d@gmail.com"
+                  className="block text-[11px] tracking-[1px] text-black/60 hover:text-black hover:italic hover:font-bold transition-colors"
+                  data-cursor="pointer"
+                >
+                  nikoletta.k.d@gmail.com
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/nikoletta-kalmar/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-[11px] tracking-[1px] text-black/60 hover:text-black hover:italic hover:font-bold transition-colors mt-1"
+                  data-cursor="pointer"
+                >
+                  @nikoletta-kalmar
+                </a>
+              </div>
+
+              <div className="whitespace-nowrap">
+                <p className="text-[8px] tracking-[3px] uppercase text-black/30 mb-3">
+                  Location
+                </p>
+                <p className="text-[11px] tracking-[1px] text-black/60">
+                  The Hague
+                </p>
+                <p className="text-[11px] tracking-[1px] text-black/60 mt-1">
+                  Netherlands
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="w-full h-px bg-black/10 mt-8"
+              {...fade(0.35)}
+            />
+          </div>
+        </div>
+      )}
     </Modal>
   );
 };
