@@ -67,7 +67,7 @@ const Modal = ({ children, onClose, title = "Untitled", contentRef, bg }) => {
           </div>
 
           {/* Scrollable content */}
-          <div ref={contentRef} className="overflow-y-auto overscroll-contain flex-1">
+          <div ref={contentRef} className="overflow-y-auto overflow-x-clip overscroll-contain flex-1">
             {children}
           </div>
         </div>

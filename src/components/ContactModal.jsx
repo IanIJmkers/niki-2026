@@ -91,7 +91,7 @@ const ContactModal = ({ onClose }) => {
     >
       {isMobile ? (
         /* Mobile layout — stacked, circle overflows */
-        <div className="relative min-h-[80vh] overflow-visible">
+        <div className="relative min-h-[80vh] overflow-x-clip overflow-y-visible">
           {/* Rotating circle — large, bleeds out of modal */}
           <motion.svg
             viewBox="0 0 1000 1000"
