@@ -48,18 +48,29 @@ const AboutModal = ({ onClose }) => {
     <Modal onClose={onClose} title="About me" contentRef={contentRef} bg={GOLD}>
       {isMobile ? (
         <>
-          {/* Mobile: full-screen heading hero, then scroll for content */}
+          {/* Mobile: full-screen heading hero */}
           <div className="relative px-6 min-h-[75vh] flex flex-col items-center justify-center mt-10">
-            <h1 className="font-lunette text-[7.5rem] uppercase leading-none tracking-wide text-black/90">
+            <motion.h1
+              className="font-lunette text-[7.5rem] uppercase leading-none tracking-wide text-black/90"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+            >
               Where strategy
               <br />
               becomes design
-            </h1>
+            </motion.h1>
           </div>
 
-          {/* Mobile: scrollable content below */}
+          {/* Mobile: scrollable content below — fades in on scroll */}
           <div className="px-6 pb-12">
-            <div className="max-w-[720px] mx-auto pt-14">
+            <motion.div
+              className="max-w-[720px] mx-auto pt-14"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
+            >
               <p className="text-sm text-black/60 leading-[1.8] tracking-wide">
                 — a Transformation Designer. I make things that make people
                 pause, question, and look twice. Whether it's a fake lychee
@@ -73,20 +84,28 @@ const AboutModal = ({ onClose }) => {
                 making the overlooked feel unmissable — I'm probably already
                 interested.
               </p>
-            </div>
+            </motion.div>
 
-            <img
+            <motion.img
               className="relative mt-4 w-[40%] "
               src="/images/niki-logo-text-black.webp"
               alt="Nikoletta"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 1, 0.5, 1] }}
             />
 
-            <img
-              className="relative -mt-2 w-32 rounded-lg object-contain"
+            <motion.img
+              className="relative -mt-2 w-32 ml-10 rounded-lg object-contain"
               src="/images/about.webp"
               alt="Nikoletta Kalmar"
               loading="lazy"
               decoding="async"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 1, 0.5, 1] }}
             />
           </div>
         </>
