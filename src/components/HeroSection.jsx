@@ -72,7 +72,7 @@ const HeroSection = ({ introPhase, onOpenModal }) => {
         {/* Headline — bottom right */}
         <div className="absolute right-4 bottom-13 max-w-[50%] text-right md:max-w-none md:bottom-8 md:right-6 lg:bottom-10 lg:right-10">
           <motion.h1
-            className="font-lunette text-[clamp(2.8rem,8vw,8rem)] font-[300] text-gold m-0 uppercase leading-[0.82] tracking-[2.5px] md:tracking-[3px]"
+            className="font-lunette text-[3.5rem] md:text-[clamp(2.8rem,8vw,8rem)] font-[300] text-gold m-0 uppercase leading-[0.82] tracking-[2.5px] md:tracking-[3px]"
             style={{ transformOrigin: "bottom right" }}
             initial={{ y: 30, scaleY: 1.9 }}
             animate={{
