@@ -48,8 +48,8 @@ const AboutModal = ({ onClose }) => {
     <Modal onClose={onClose} title="About me" contentRef={contentRef} bg={GOLD}>
       {isMobile ? (
         <>
-          {/* Mobile: full-screen heading hero */}
-          <div className="relative px-6 min-h-[75vh] flex flex-col items-center justify-center mt-10">
+          {/* Mobile: heading + text together */}
+          <div className="relative px-6 min-h-[75vh] flex flex-col justify-center mt-10">
             <motion.h1
               className="font-lunette text-[7.5rem] uppercase leading-none tracking-wide text-black/90"
               initial={{ opacity: 0, y: 20 }}
@@ -60,32 +60,33 @@ const AboutModal = ({ onClose }) => {
               <br />
               becomes design
             </motion.h1>
+
+            <motion.p
+              className="text-sm text-black/60 leading-[1.8] tracking-wide  max-w-[720px]"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, amount: 0.8 }}
+              transition={{
+                duration: 2.5,
+                delay: 0.4,
+                ease: [0.25, 1, 0.5, 1],
+              }}
+            >
+              — a Transformation Designer. I make things that make people pause,
+              question, and look twice. Whether it's a fake lychee convincing
+              enough to fool you at dinner, a sculptural spine that comments on
+              our tech-dependent future, or a brand identity that actually feels
+              like someone — my work sits at the intersection of concept, craft,
+              and curiosity. I'm equally comfortable getting my hands dirty in a
+              workshop as I am diving into philosophical rabbit holes or
+              building a brand from scratch. If it involves material
+              experimentation, spatial storytelling, or making the overlooked
+              feel unmissable — I'm probably already interested.
+            </motion.p>
           </div>
 
-          {/* Mobile: scrollable content below — fades in on scroll */}
+          {/* Mobile: logo and photo below */}
           <div className="px-6 pb-12">
-            <motion.div
-              className="max-w-[720px] mx-auto pt-14"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
-            >
-              <p className="text-sm text-black/60 leading-[1.8] tracking-wide">
-                — a Transformation Designer. I make things that make people
-                pause, question, and look twice. Whether it's a fake lychee
-                convincing enough to fool you at dinner, a sculptural spine that
-                comments on our tech-dependent future, or a brand identity that
-                actually feels like someone — my work sits at the intersection
-                of concept, craft, and curiosity. I'm equally comfortable
-                getting my hands dirty in a workshop as I am diving into
-                philosophical rabbit holes or building a brand from scratch. If
-                it involves material experimentation, spatial storytelling, or
-                making the overlooked feel unmissable — I'm probably already
-                interested.
-              </p>
-            </motion.div>
-
             <motion.img
               className="relative mt-4 w-[40%] "
               src="/images/niki-logo-text-black.webp"
@@ -93,7 +94,11 @@ const AboutModal = ({ onClose }) => {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 1, 0.5, 1] }}
+              transition={{
+                duration: 0.8,
+                delay: 0.1,
+                ease: [0.25, 1, 0.5, 1],
+              }}
             />
 
             <motion.img
@@ -105,7 +110,11 @@ const AboutModal = ({ onClose }) => {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 1, 0.5, 1] }}
+              transition={{
+                duration: 0.8,
+                delay: 0.15,
+                ease: [0.25, 1, 0.5, 1],
+              }}
             />
           </div>
         </>
