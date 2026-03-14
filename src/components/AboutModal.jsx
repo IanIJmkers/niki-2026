@@ -86,7 +86,7 @@ const AboutModal = ({ onClose }) => {
           </div>
 
           {/* Mobile: logo and photo below */}
-          <div className="px-6 pb-40">
+          <div className="px-6 pb-60">
             <motion.img
               className="relative z-10 mt-4 w-[40%]"
               src="/images/niki-logo-text-black.webp"

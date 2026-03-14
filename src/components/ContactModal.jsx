@@ -115,10 +115,14 @@ const ContactModal = ({ onClose }) => {
           {/* Content — stacked vertically */}
           <div className="relative z-10 px-6 pt-20 pb-12">
             <motion.p
-              className="font-body text-[11px] leading-relaxed tracking-[1px] text-black/50 font-light mb-10 text-right"
+              className="font-body text-[14px] leading-relaxed tracking-[1px] text-black/50 font-light mb-10 text-right"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 1, 0.5, 1] }}
+              transition={{
+                duration: 0.7,
+                delay: 0.1,
+                ease: [0.25, 1, 0.5, 1],
+              }}
             >
               For any enquiry
               <br />
@@ -131,7 +135,11 @@ const ContactModal = ({ onClose }) => {
               className="grid grid-cols-1 gap-6 text-right mt-15"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 1, 0.5, 1] }}
+              transition={{
+                duration: 0.7,
+                delay: 0.3,
+                ease: [0.25, 1, 0.5, 1],
+              }}
             >
               <div className="whitespace-nowrap">
                 <p className="text-[8px] tracking-[3px] uppercase text-black/30 mb-3">
