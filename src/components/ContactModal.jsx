@@ -113,9 +113,9 @@ const ContactModal = ({ onClose }) => {
           </motion.svg>
 
           {/* Content — stacked vertically */}
-          <div className="relative z-10 px-6 pt-20 pb-12">
+          <div className="relative z-10 px-6 pt-22 pb-12">
             <motion.p
-              className="font-body text-[14px] leading-relaxed tracking-[1px] text-black/50 font-light mb-10 text-right"
+              className="font-body uppercase text-[17px] leading-relaxed tracking-[1px] text-black/50 font-light mb-10 text-right"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -124,15 +124,15 @@ const ContactModal = ({ onClose }) => {
                 ease: [0.25, 1, 0.5, 1],
               }}
             >
-              For any enquiry
+              For any enquiry or
               <br />
-              or just to say hello
+              just to say hello
               <br />
               reach out here!
             </motion.p>
 
             <motion.div
-              className="grid grid-cols-1 gap-6 text-right mt-15"
+              className="grid grid-cols-1 gap-6 text-right mt-14"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
