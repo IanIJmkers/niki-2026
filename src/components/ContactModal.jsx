@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { easeOutQuart } from "../animations/variants";
 import Modal from "./Modal";
+import useIsMobile from "../hooks/useIsMobile";
 
 const PINK = "#F8C8DC";
 const CIRCLE_R = 420;
@@ -42,6 +43,7 @@ const ContactModal = ({ onClose }) => {
   const angleRef = useRef(0);
   const rafRef = useRef(null);
   const velocityRef = useRef(BASE_SPEED);
+  const isMobile = useIsMobile();
 
   const rawRotate = useMotionValue(0);
   const rotate = useSpring(rawRotate, {
@@ -59,7 +61,7 @@ const ContactModal = ({ onClose }) => {
       velocityRef.current += -e.deltaY * WHEEL_BOOST * 0.01;
     };
 
-    if (el) {
+    if (el && !isMobile) {
       el.addEventListener("wheel", onWheel, { passive: false });
     }
 
@@ -78,7 +80,7 @@ const ContactModal = ({ onClose }) => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       if (el) el.removeEventListener("wheel", onWheel);
     };
-  }, [rawRotate]);
+  }, [rawRotate, isMobile]);
 
   return (
     <Modal
@@ -91,7 +93,7 @@ const ContactModal = ({ onClose }) => {
         {/* Carousel — shifted to the right */}
         <motion.svg
           viewBox="0 0 1000 1000"
-          className="absolute -right-[15%] top-1/2 -translate-y-1/2 w-[130vw] h-[130vw] md:w-275 md:h-275 pointer-events-none"
+          className="absolute -right-[15%] top-1/2 -translate-y-1/2 w-[90vw] h-[90vw] md:w-275 md:h-275 pointer-events-none"
           style={{ rotate }}
         >
           <defs>
@@ -110,14 +112,14 @@ const ContactModal = ({ onClose }) => {
 
         {/* Header — positioned at top right */}
         <motion.p
-          className="absolute top-8 md:top-26 right-14 md:right-28 lg:right-29.5 z-10 font-body text-[11px] md:text-[20px] leading-relaxed tracking-[1px] text-black/50 max-w-xs text-right font-light"
+          className="absolute top-8 md:top-26 right-4 md:right-28 lg:right-29.5 z-10 font-body text-[11px] md:text-[20px] leading-relaxed tracking-[1px] text-black/50 max-w-xs text-right font-light"
           {...fade(0.1)}
         >
           For any enquiry or just to say hello reach out here!
         </motion.p>
 
         {/* Content — vertically centered, aligned right */}
-        <div className="relative z-10 w-full max-w-xl mr-14 md:mr-28 lg:mr-30 text-right">
+        <div className="relative z-10 w-full max-w-xl mr-4 md:mr-28 lg:mr-30 text-right">
           {/* Divider */}
           <motion.div className="w-full h-px bg-black/10 mb-8" {...fade(0.2)} />
 

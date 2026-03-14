@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { motion, useDragControls } from "framer-motion";
 import { X } from "lucide-react";
+import useIsMobile from "../hooks/useIsMobile";
 
 const Modal = ({ children, onClose, title = "Untitled", contentRef, bg }) => {
   const dragControls = useDragControls();
   const [isDragging, setIsDragging] = useState(false);
+  const isMobile = useIsMobile();
 
   return (
     <>
@@ -21,7 +23,7 @@ const Modal = ({ children, onClose, title = "Untitled", contentRef, bg }) => {
       <motion.div
         className="fixed z-[70] pointer-events-auto"
         style={{ top: "3%", left: "50%", x: "-50%" }}
-        drag
+        drag={!isMobile}
         dragControls={dragControls}
         dragListener={false}
         dragMomentum={false}
@@ -44,7 +46,7 @@ const Modal = ({ children, onClose, title = "Untitled", contentRef, bg }) => {
           {/* Title bar — drag handle */}
           <div
             className="flex items-center justify-between px-4 py-3 border-b border-black/5 select-none shrink-0"
-            onPointerDown={(e) => dragControls.start(e)}
+            onPointerDown={isMobile ? undefined : (e) => dragControls.start(e)}
             style={{ touchAction: "none" }}
             data-cursor="pointer"
           >

@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Modal from "./Modal";
+import useIsMobile from "../hooks/useIsMobile";
 
 const SPRING = { stiffness: 120, damping: 30, mass: 0.8 };
 const GOLD = "rgb(233, 229, 160)";
@@ -8,6 +9,7 @@ const GOLD = "rgb(233, 229, 160)";
 const AboutModal = ({ onClose }) => {
   const contentRef = useRef(null);
   const scrollRef = useRef(0);
+  const isMobile = useIsMobile();
 
   // 0 → 1 progress driven by wheel
   const rawProgress = useMotionValue(0);
@@ -25,6 +27,7 @@ const AboutModal = ({ onClose }) => {
   const textPadding = useTransform(progress, [0, 0.3], [200, 40]);
 
   useEffect(() => {
+    if (isMobile) return;
     const el = contentRef.current;
     if (!el) return;
 
@@ -39,58 +42,101 @@ const AboutModal = ({ onClose }) => {
 
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => el.removeEventListener("wheel", onWheel);
-  }, [rawProgress]);
+  }, [rawProgress, isMobile]);
 
   return (
     <Modal onClose={onClose} title="About me" contentRef={contentRef} bg={GOLD}>
-      <div className="relative px-6 md:px-12 lg:px-16 overflow-hidden min-h-[80vh] flex flex-col items-start justify-center pt-40">
-        {/* Statement header — scrolls up partially */}
-        <motion.h1
-          className="font-lunette text-[7rem] md:text-[9rem] lg:text-[11rem] uppercase leading-none tracking-wide text-black/90 -mb-6 md:-mb-10 relative z-20 mx-auto"
-          style={{ y: h1Y }}
-        >
-          Where strategy
-          <br />
-          becomes design
-        </motion.h1>
+      {isMobile ? (
+        <>
+          {/* Mobile: full-screen heading hero, then scroll for content */}
+          <div className="relative px-6 min-h-[75vh] flex flex-col items-center justify-center mt-10">
+            <h1 className="font-lunette text-[7.5rem] uppercase leading-none tracking-wide text-black/90">
+              Where strategy
+              <br />
+              becomes design
+            </h1>
+          </div>
 
-        {/* About text */}
-        <motion.div
-          className="max-w-[720px] relative z-10 mx-auto"
-          style={{ y: textY, paddingTop: textPadding }}
-        >
-          <p className="text-sm md:text-base text-black/60 leading-[1.8] tracking-wide">
-            — a Transformation Designer. I make things that make people pause,
-            question, and look twice. Whether it's a fake lychee convincing
-            enough to fool you at dinner, a sculptural spine that comments on
-            our tech-dependent future, or a brand identity that actually feels
-            like someone — my work sits at the intersection of concept, craft,
-            and curiosity. I'm equally comfortable getting my hands dirty in a
-            workshop as I am diving into philosophical rabbit holes or building
-            a brand from scratch. If it involves material experimentation,
-            spatial storytelling, or making the overlooked feel unmissable — I'm
-            probably already interested.
-          </p>
-        </motion.div>
+          {/* Mobile: scrollable content below */}
+          <div className="px-6 pb-12">
+            <div className="max-w-[720px] mx-auto pt-14">
+              <p className="text-sm text-black/60 leading-[1.8] tracking-wide">
+                — a Transformation Designer. I make things that make people
+                pause, question, and look twice. Whether it's a fake lychee
+                convincing enough to fool you at dinner, a sculptural spine that
+                comments on our tech-dependent future, or a brand identity that
+                actually feels like someone — my work sits at the intersection
+                of concept, craft, and curiosity. I'm equally comfortable
+                getting my hands dirty in a workshop as I am diving into
+                philosophical rabbit holes or building a brand from scratch. If
+                it involves material experimentation, spatial storytelling, or
+                making the overlooked feel unmissable — I'm probably already
+                interested.
+              </p>
+            </div>
 
-        {/* Niki logo — scrolls up over text, stacks on h1 */}
-        <motion.img
-          className="relative z-50 mt-60 -ml-4 md:-ml-6 w-[40%] md:w-[35%] mx-auto"
-          src="/images/niki-logo-text-black.webp"
-          alt="Nikoletta"
-          style={{ y: logoY }}
-        />
+            <img
+              className="relative mt-4 w-[40%] "
+              src="/images/niki-logo-text-black.webp"
+              alt="Nikoletta"
+            />
 
-        {/* Photo — scrolls up the most, stacks on logo */}
-        <motion.img
-          className="relative z-40 -mt-3 md:-mt-6 ml-0 md:ml-5 w-32 md:w-40 rounded-lg object-contain mx-auto"
-          src="/images/about.webp"
-          alt="Nikoletta Kalmar"
-          loading="lazy"
-          decoding="async"
-          style={{ y: photoY }}
-        />
-      </div>
+            <img
+              className="relative -mt-2 w-32 rounded-lg object-contain"
+              src="/images/about.webp"
+              alt="Nikoletta Kalmar"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </>
+      ) : (
+        /* Desktop: wheel-driven scroll animation */
+        <div className="relative px-6 md:px-12 lg:px-16 overflow-hidden min-h-[80vh] flex flex-col items-start justify-center pt-40">
+          <motion.h1
+            className="font-lunette text-[7rem] md:text-[9rem] lg:text-[11rem] uppercase leading-none tracking-wide text-black/90 -mb-6 md:-mb-10 relative z-20 mx-auto"
+            style={{ y: h1Y }}
+          >
+            Where strategy
+            <br />
+            becomes design
+          </motion.h1>
+
+          <motion.div
+            className="max-w-[720px] relative z-10 mx-auto"
+            style={{ y: textY, paddingTop: textPadding }}
+          >
+            <p className="text-sm md:text-base text-black/60 leading-[1.8] tracking-wide">
+              — a Transformation Designer. I make things that make people pause,
+              question, and look twice. Whether it's a fake lychee convincing
+              enough to fool you at dinner, a sculptural spine that comments on
+              our tech-dependent future, or a brand identity that actually feels
+              like someone — my work sits at the intersection of concept, craft,
+              and curiosity. I'm equally comfortable getting my hands dirty in a
+              workshop as I am diving into philosophical rabbit holes or
+              building a brand from scratch. If it involves material
+              experimentation, spatial storytelling, or making the overlooked
+              feel unmissable — I'm probably already interested.
+            </p>
+          </motion.div>
+
+          <motion.img
+            className="relative z-50 mt-60 -ml-4 md:-ml-6 w-[40%] md:w-[35%] mx-auto"
+            src="/images/niki-logo-text-black.webp"
+            alt="Nikoletta"
+            style={{ y: logoY }}
+          />
+
+          <motion.img
+            className="relative z-40 -mt-3 md:-mt-6 ml-0 md:ml-5 w-32 md:w-40 rounded-lg object-contain mx-auto"
+            src="/images/about.webp"
+            alt="Nikoletta Kalmar"
+            loading="lazy"
+            decoding="async"
+            style={{ y: photoY }}
+          />
+        </div>
+      )}
     </Modal>
   );
 };
