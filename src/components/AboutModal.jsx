@@ -1,9 +1,14 @@
 import { useRef, useEffect } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import Splitting from "splitting";
 import Modal from "./Modal";
 import useIsMobile from "../hooks/useIsMobile";
+import useModalLenis from "../hooks/useModalLenis";
 
-const SPRING = { stiffness: 120, damping: 30, mass: 0.8 };
+gsap.registerPlugin(ScrollTrigger);
+
 const GOLD = "rgb(233, 229, 160)";
 
 const AboutModal = ({ onClose }) => {
@@ -11,38 +16,235 @@ const AboutModal = ({ onClose }) => {
   const scrollRef = useRef(0);
   const isMobile = useIsMobile();
 
-  // 0 → 1 progress driven by wheel
-  const rawProgress = useMotionValue(0);
-  const progress = useSpring(rawProgress, SPRING);
+  const h1Ref = useRef(null);
+  const textRef = useRef(null);
+  const logoRef = useRef(null);
+  const photoRef = useRef(null);
+  const progressLineRef = useRef(null);
+  const timelineRef = useRef(null);
+  const sparkle1Ref = useRef(null);
+  const sparkle2Ref = useRef(null);
+  const sparkle3Ref = useRef(null);
 
-  // h1 moves up
-  const h1Y = useTransform(progress, [0, 0.5], [0, -350]);
-  // About text scrolls out the top of the modal
-  const textY = useTransform(progress, [0.05, 1], [0, -550]);
-  // Logo starts much later — clear delay after text
-  const logoY = useTransform(progress, [0.05, 1], [0, -750]);
-  // Photo starts even later
-  const photoY = useTransform(progress, [0.05, 1], [0, -750]);
-  // About text padding shrinks from pt-50 (200px) → pt-10 (40px)
-  const textPadding = useTransform(progress, [0, 0.3], [200, 40]);
+  // Lenis smooth scroll on desktop
+  useModalLenis(contentRef, { enabled: !isMobile });
 
+  useGSAP(
+    () => {
+      const scroller = contentRef.current;
+      if (!scroller) return;
+
+      const ctx = gsap.context(() => {
+        // Paragraph starts hidden — revealed on scroll
+        gsap.set(textRef.current, { opacity: 0 });
+
+        // Timeline starts hidden — revealed on first scroll
+        if (timelineRef.current) {
+          gsap.set(timelineRef.current, { opacity: 0 });
+        }
+
+        if (!isMobile) {
+          // --- Desktop: wheel-driven 0→1 progress via GSAP ---
+          const proxy = { p: 0 };
+
+          const onWheel = (e) => {
+            e.preventDefault();
+            scrollRef.current = Math.max(
+              0,
+              Math.min(scrollRef.current + e.deltaY * 0.0015, 1),
+            );
+
+            gsap.to(proxy, {
+              p: scrollRef.current,
+              duration: 1.2,
+              ease: "power2.out",
+              overwrite: true,
+              onUpdate: () => {
+                const p = proxy.p;
+
+                // h1 moves up: 0→0.5 maps to y 0→-350
+                const h1Y = gsap.utils.interpolate(
+                  0,
+                  -350,
+                  gsap.utils.clamp(0, 1, p / 0.5),
+                );
+                // text scrolls out: 0.05→1 maps to y 0→-550
+                const textP = gsap.utils.clamp(0, 1, (p - 0.05) / 0.95);
+                const textY = gsap.utils.interpolate(0, -550, textP);
+                // padding shrinks: 0→0.3 maps to 200→40
+                const padP = gsap.utils.clamp(0, 1, p / 0.3);
+                const textPad = gsap.utils.interpolate(200, 40, padP);
+                // logo + photo: 0.05→1 maps to y 0→-750
+                const logoP = gsap.utils.clamp(0, 1, (p - 0.05) / 0.95);
+                const logoY = gsap.utils.interpolate(0, -750, logoP);
+                const photoY = gsap.utils.interpolate(0, -750, logoP);
+
+                gsap.set(h1Ref.current, { y: h1Y });
+                gsap.set(textRef.current, { y: textY, paddingTop: textPad });
+                gsap.set(logoRef.current, { y: logoY });
+                gsap.set(photoRef.current, { y: photoY });
+
+                // Progress line fill
+                if (progressLineRef.current) {
+                  gsap.set(progressLineRef.current, { scaleY: p });
+                }
+
+                // Position sparkles to track their elements
+                if (timelineRef.current) {
+                  const tlRect = timelineRef.current.getBoundingClientRect();
+                  const tlH = tlRect.height;
+                  const tlTop = tlRect.top;
+
+                  [
+                    { ref: sparkle1Ref, el: h1Ref },
+                    { ref: sparkle2Ref, el: textRef },
+                    { ref: sparkle3Ref, el: logoRef },
+                  ].forEach(({ ref, el }) => {
+                    if (!ref.current || !el.current) return;
+                    const elRect = el.current.getBoundingClientRect();
+                    const elCenter = elRect.top + elRect.height / 2 - tlTop;
+                    const pct = gsap.utils.clamp(
+                      0,
+                      100,
+                      (elCenter / tlH) * 100,
+                    );
+                    gsap.set(ref.current, { top: `${pct}%` });
+                    const active = p >= pct / 100;
+                    gsap.to(ref.current, {
+                      scale: active ? 1 : 0.5,
+                      opacity: active ? 1 : 0.3,
+                      duration: 0.4,
+                      ease: "power2.out",
+                      overwrite: "auto",
+                    });
+                  });
+                }
+
+                // Reveal paragraph + timeline once user starts scrolling
+                if (p > 0.02) {
+                  gsap.to(textRef.current, {
+                    opacity: 1,
+                    duration: 0.6,
+                    ease: "power3.out",
+                    overwrite: "auto",
+                  });
+                  if (timelineRef.current) {
+                    gsap.to(timelineRef.current, {
+                      opacity: 1,
+                      duration: 1,
+                      ease: "power3.out",
+                      overwrite: "auto",
+                    });
+                  }
+                }
+              },
+            });
+          };
+
+          scroller.addEventListener("wheel", onWheel, { passive: false });
+
+          // Splitting — staggered character reveal on headline
+          const split = Splitting({ target: h1Ref.current, by: "chars" });
+          const chars = split[0]?.chars || [];
+          if (chars.length) {
+            gsap.set(chars, { opacity: 0, y: 40 });
+            gsap.to(chars, {
+              opacity: 1,
+              y: 0,
+              stagger: 0.03,
+              duration: 1,
+              ease: "power4.out",
+              delay: 0.4,
+            });
+          }
+
+          // Cleanup
+          return () => {
+            scroller.removeEventListener("wheel", onWheel);
+          };
+        } else {
+          // --- Mobile: GSAP ScrollTrigger reveals ---
+
+          // h1 fade-up on mount
+          gsap.from(h1Ref.current, {
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+
+          // Splitting on mobile headline
+          const split = Splitting({ target: h1Ref.current, by: "chars" });
+          const chars = split[0]?.chars || [];
+          if (chars.length) {
+            gsap.from(chars, {
+              opacity: 0,
+              y: 20,
+              stagger: 0.02,
+              duration: 0.6,
+              ease: "power3.out",
+              delay: 0.1,
+            });
+          }
+
+          // Paragraph — revealed on scroll (opacity only, no position change)
+          gsap.to(textRef.current, {
+            opacity: 1,
+            duration: 0.8,
+            delay: 0.1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: textRef.current,
+              scroller,
+              start: "top 95%",
+              toggleActions: "play none none none",
+            },
+          });
+
+          // Logo — reveal on scroll
+          gsap.from(logoRef.current, {
+            opacity: 0,
+            y: 15,
+            duration: 2,
+            delay: 0.3,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: logoRef.current,
+              scroller,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          });
+
+          // Photo — reveal on scroll
+          gsap.from(photoRef.current, {
+            opacity: 0,
+            y: 15,
+            duration: 2,
+            delay: 0.3,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: photoRef.current,
+              scroller,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          });
+        }
+
+        ScrollTrigger.refresh();
+      }, scroller);
+
+      return () => ctx.revert();
+    },
+    { scope: contentRef, dependencies: [isMobile] },
+  );
+
+  // Refresh after modal enter animation settles
   useEffect(() => {
-    if (isMobile) return;
-    const el = contentRef.current;
-    if (!el) return;
-
-    const onWheel = (e) => {
-      e.preventDefault();
-      scrollRef.current = Math.max(
-        0,
-        Math.min(scrollRef.current + e.deltaY * 0.003, 1),
-      );
-      rawProgress.set(scrollRef.current);
-    };
-
-    el.addEventListener("wheel", onWheel, { passive: false });
-    return () => el.removeEventListener("wheel", onWheel);
-  }, [rawProgress, isMobile]);
+    const id = setTimeout(() => ScrollTrigger.refresh(), 450);
+    return () => clearTimeout(id);
+  }, []);
 
   return (
     <Modal onClose={onClose} title="About me" contentRef={contentRef} bg={GOLD}>
@@ -50,91 +252,19 @@ const AboutModal = ({ onClose }) => {
         <>
           {/* Mobile: heading + text together */}
           <div className="relative px-6 min-h-[75vh] flex flex-col justify-center mt-20">
-            <motion.h1
+            <h1
+              ref={h1Ref}
               className="font-lunette text-[7.5rem] uppercase leading-none tracking-wide text-black/90"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
             >
               Where strategy
               <br />
               becomes design
-            </motion.h1>
+            </h1>
 
-            <motion.p
+            <p
+              ref={textRef}
               className="text-sm text-black/60 leading-[1.8] tracking-wide mt-4 max-w-[720px]"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.8 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.1,
-                ease: [0.25, 1, 0.5, 1],
-              }}
             >
-              — a Transformation Designer. I make things that make people pause,
-              question, and look twice. Whether it's a fake lychee convincing
-              enough to fool you at dinner, a sculptural spine that comments on
-              our tech-dependent future, or a brand identity that actually feels
-              like someone — my work sits at the intersection of concept, craft,
-              and curiosity. I'm equally comfortable getting my hands dirty in a
-              workshop as I am diving into philosophical rabbit holes or
-              building a brand from scratch. If it involves material
-              experimentation, spatial storytelling, or making the overlooked
-              feel unmissable — I'm probably already interested.
-            </motion.p>
-          </div>
-
-          {/* Mobile: logo and photo below */}
-          <div className="px-6 pb-60">
-            <motion.img
-              className="relative z-10 mt-4 w-[40%]"
-              src="/images/niki-logo-text-black.webp"
-              alt="Nikoletta"
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{
-                duration: 2,
-                delay: 0.3,
-                ease: [0.25, 1, 0.5, 1],
-              }}
-            />
-
-            <motion.img
-              className="relative z-0 -mt-2 w-32 ml-10 rounded-lg object-contain"
-              src="/images/about.webp"
-              alt="Nikoletta Kalmar"
-              loading="lazy"
-              decoding="async"
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{
-                duration: 2,
-                delay: 0.3,
-                ease: [0.25, 1, 0.5, 1],
-              }}
-            />
-          </div>
-        </>
-      ) : (
-        /* Desktop: wheel-driven scroll animation */
-        <div className="relative px-6 md:px-12 lg:px-16 overflow-hidden min-h-[80vh] flex flex-col items-start justify-center pt-40">
-          <motion.h1
-            className="font-lunette text-[7rem] md:text-[9rem] lg:text-[11rem] uppercase leading-none tracking-wide text-black/90 -mb-6 md:-mb-10 relative z-20 mx-auto"
-            style={{ y: h1Y }}
-          >
-            Where strategy
-            <br />
-            becomes design
-          </motion.h1>
-
-          <motion.div
-            className="max-w-[720px] relative z-10 mx-auto"
-            style={{ y: textY, paddingTop: textPadding }}
-          >
-            <p className="text-sm md:text-base text-black/60 leading-[1.8] tracking-wide">
               — a Transformation Designer. I make things that make people pause,
               question, and look twice. Whether it's a fake lychee convincing
               enough to fool you at dinner, a sculptural spine that comments on
@@ -146,23 +276,124 @@ const AboutModal = ({ onClose }) => {
               experimentation, spatial storytelling, or making the overlooked
               feel unmissable — I'm probably already interested.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.img
-            className="relative z-50 mt-60 -ml-4 md:-ml-6 w-[40%] md:w-[35%] mx-auto"
-            src="/images/niki-logo-text-black.webp"
-            alt="Nikoletta"
-            style={{ y: logoY }}
-          />
+          {/* Mobile: logo and photo below */}
+          <div className="px-6 pb-8">
+            <img
+              ref={logoRef}
+              className="relative z-10 mt-4 w-[40%]"
+              src="/images/niki-logo-text-black.webp"
+              alt="Nikoletta"
+            />
 
-          <motion.img
-            className="relative z-40 -mt-3 md:-mt-6 ml-0 md:ml-5 w-32 md:w-40 rounded-lg object-contain mx-auto"
-            src="/images/about.webp"
-            alt="Nikoletta Kalmar"
-            loading="lazy"
-            decoding="async"
-            style={{ y: photoY }}
-          />
+            <img
+              ref={photoRef}
+              className="relative z-0 -mt-2 w-32 ml-10 rounded-lg object-contain"
+              src="/images/about.webp"
+              alt="Nikoletta Kalmar"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </>
+      ) : (
+        /* Desktop: wheel-driven scroll animation */
+        <div className="relative">
+          {/* Scroll progress line — outside overflow-hidden */}
+          <div
+            ref={timelineRef}
+            className="absolute left-10 top-12 bottom-12 z-30 pointer-events-none overflow-visible w-16"
+          >
+            {/* Background line */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-black/10" />
+            {/* Filled progress line */}
+            <div
+              ref={progressLineRef}
+              className="absolute left-1/2 -translate-x-1/2 top-0 w-px bg-black/60 origin-top h-full"
+              style={{ scaleY: 0 }}
+            />
+            {/* Sparkle 1 — tracks h1 */}
+            <img
+              ref={sparkle1Ref}
+              src="/images/sparkle.png"
+              alt=""
+              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 opacity-30 scale-50"
+              aria-hidden="true"
+            />
+            {/* Sparkle 2 — tracks paragraph */}
+            <img
+              ref={sparkle2Ref}
+              src="/images/sparkle.png"
+              alt=""
+              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 opacity-30 scale-50"
+              aria-hidden="true"
+            />
+            {/* Sparkle 3 — tracks logo */}
+            <img
+              ref={sparkle3Ref}
+              src="/images/sparkle.png"
+              alt=""
+              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 opacity-30 scale-50"
+              aria-hidden="true"
+            />
+          </div>
+
+          <div className="px-6 md:px-12 lg:px-16 overflow-hidden min-h-[80vh] flex flex-col items-start justify-center pt-40">
+            <h1
+              ref={h1Ref}
+              className="font-lunette text-[7rem] md:text-[9rem] lg:text-[11rem] uppercase leading-none tracking-wide text-black/90 -mb-6 md:-mb-10 relative z-20 mx-auto"
+            >
+              Where strategy
+              <br />
+              becomes design
+            </h1>
+
+            <div
+              ref={textRef}
+              className="max-w-[720px] relative z-10 mx-auto"
+              style={{ paddingTop: 200 }}
+            >
+              <p className="text-sm md:text-base text-black/60 leading-[1.8] tracking-wide">
+                — a Transformation Designer. I make things that make people
+                pause, question, and look twice. Whether it's a fake lychee
+                convincing enough to fool you at dinner, a sculptural spine that
+                comments on our tech-dependent future, or a brand identity that
+                actually feels like someone — my work sits at the intersection
+                of concept, craft, and curiosity. I'm equally comfortable
+                getting my hands dirty in a workshop as I am diving into
+                philosophical rabbit holes or building a brand from scratch. If
+                it involves material experimentation, spatial storytelling, or
+                making the overlooked feel unmissable — I'm probably already
+                interested.
+              </p>
+            </div>
+
+            <img
+              ref={logoRef}
+              className="relative z-50 mt-10 w-[40%] md:w-[35%] ml-auto mr-4 md:mr-6"
+              src="/images/niki-logo-text-black.webp"
+              alt="Nikoletta"
+            />
+
+            <img
+              ref={photoRef}
+              className="relative z-40 -mt-3 md:-mt-6 w-32 md:w-40 rounded-lg object-contain ml-auto mr-10 md:mr-12"
+              src="/images/about.webp"
+              alt="Nikoletta Kalmar"
+              loading="lazy"
+              decoding="async"
+            />
+
+            {/* Thanks text — bottom left */}
+            <img
+              src="/images/thanks.png"
+              alt="thanks"
+              className="w-[35%] md:w-[15%] mt-16 mb-4 ml-10"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </div>
       )}
     </Modal>

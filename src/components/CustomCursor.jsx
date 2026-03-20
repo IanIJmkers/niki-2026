@@ -98,7 +98,7 @@ const CustomCursor = () => {
           ) : (
             <motion.div
               key="default"
-              className="w-10 h-10"
+              className="w-12 h-12"
               style={sparkleStyle}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
