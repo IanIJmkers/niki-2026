@@ -265,16 +265,24 @@ const AboutModal = ({ onClose }) => {
               ref={textRef}
               className="text-sm text-black/60 leading-[1.8] tracking-wide mt-4 max-w-[720px]"
             >
-              — a Transformation Designer. I make things that make people pause,
-              question, and look twice. Whether it's a fake lychee convincing
-              enough to fool you at dinner, a sculptural spine that comments on
-              our tech-dependent future, or a brand identity that actually feels
-              like someone — my work sits at the intersection of concept, craft,
-              and curiosity. I'm equally comfortable getting my hands dirty in a
-              workshop as I am diving into philosophical rabbit holes or
-              building a brand from scratch. If it involves material
-              experimentation, spatial storytelling, or making the overlooked
-              feel unmissable — I'm probably already interested.
+              I started my career in design the way most people don't - by
+              designing a logo for a solar-powered international car race
+              competition. These days the projects are less solar-powered but
+              more pixel-perfect. You'll find me buried in Pinterest, building
+              moodboards like my life depends on it, and quietly rearranging
+              things until they feel right. I’ve worked across branding,
+              packaging, and visual identity, helping shape creative direction
+              at a studio, and leading the design side of a tech-hackathon
+              exploring AI in urban infrastructure. Majoring in Transformation
+              Design, and minoring in Critical Studies, my practice operates
+              somewhere between a strategy board and a workshop table - I'm
+              comfortable in both. This mostly means I have an unreasonably
+              strong opinion about white spaces and I'll debate colour theory
+              until someone changes the subject. People tell me I'm relentlessly
+              optimistic. My portfolio, ironically, didn't get the memo - it's
+              all moody palettes and dystopian undertones. I contain multitudes
+              - I just believe good design should make you pause, and sometimes
+              a little darkness is the best way to get someone's attention.
             </p>
           </div>
 
@@ -318,7 +326,7 @@ const AboutModal = ({ onClose }) => {
               ref={sparkle1Ref}
               src="/images/sparkle.png"
               alt=""
-              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 opacity-30 scale-50"
+              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 opacity-30 scale-50"
               aria-hidden="true"
             />
             {/* Sparkle 2 — tracks paragraph */}
@@ -326,7 +334,7 @@ const AboutModal = ({ onClose }) => {
               ref={sparkle2Ref}
               src="/images/sparkle.png"
               alt=""
-              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 opacity-30 scale-50"
+              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 opacity-30 scale-50"
               aria-hidden="true"
             />
             {/* Sparkle 3 — tracks logo */}
@@ -334,7 +342,7 @@ const AboutModal = ({ onClose }) => {
               ref={sparkle3Ref}
               src="/images/sparkle.png"
               alt=""
-              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 opacity-30 scale-50"
+              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 opacity-30 scale-50"
               aria-hidden="true"
             />
           </div>
@@ -355,23 +363,36 @@ const AboutModal = ({ onClose }) => {
               style={{ paddingTop: 200 }}
             >
               <p className="text-sm md:text-base text-black/60 leading-[1.8] tracking-wide">
-                — a Transformation Designer. I make things that make people
-                pause, question, and look twice. Whether it's a fake lychee
-                convincing enough to fool you at dinner, a sculptural spine that
-                comments on our tech-dependent future, or a brand identity that
-                actually feels like someone — my work sits at the intersection
-                of concept, craft, and curiosity. I'm equally comfortable
-                getting my hands dirty in a workshop as I am diving into
-                philosophical rabbit holes or building a brand from scratch. If
-                it involves material experimentation, spatial storytelling, or
-                making the overlooked feel unmissable — I'm probably already
-                interested.
+                I started my career in design the way most people don't - by
+                designing a logo for a solar-powered international car race
+                competition. These days the projects are less solar-powered but
+                more pixel-perfect. You'll find me buried in Pinterest, building
+                moodboards like my life depends on it, and quietly rearranging
+                things until they feel right.
+                <br />
+                <br />
+                I’ve worked across branding, packaging, and visual identity,
+                helping shape creative direction at a studio, and leading the
+                design side of a tech-hackathon exploring AI in urban
+                infrastructure. Majoring in Transformation Design, and minoring
+                in Critical Studies, my practice operates somewhere between a
+                strategy board and a workshop table - I'm comfortable in both.
+                This mostly means I have an unreasonably strong opinion about
+                white spaces and I'll debate colour theory until someone changes
+                the subject.
+                <br />
+                <br />
+                People tell me I'm relentlessly optimistic. My portfolio,
+                ironically, didn't get the memo - it's all moody palettes and
+                dystopian undertones. I contain multitudes - I just believe good
+                design should make you pause, and sometimes a little darkness is
+                the best way to get someone's attention.
               </p>
             </div>
 
             <img
               ref={logoRef}
-              className="relative z-50 mt-10 w-[40%] md:w-[35%] ml-auto mr-4 md:mr-6"
+              className="relative z-50 mt-30 w-[40%] md:w-[35%] ml-auto mr-4 md:mr-6"
               src="/images/niki-logo-text-black.webp"
               alt="Nikoletta"
             />
