@@ -126,7 +126,7 @@ const ContactModal = ({ onClose }) => {
             >
               For any enquiry or
               <br />
-              just to say hello
+              just to say hello -
               <br />
               reach out here!
             </motion.p>
@@ -146,7 +146,7 @@ const ContactModal = ({ onClose }) => {
                   Name
                 </p>
                 <p className="text-[12px] tracking-[1px] text-black/60">
-                  Nikoletta Kalmar
+                  Nikoletta Kalmár
                 </p>
                 <p className="text-[12px] tracking-[1px] text-black/60 mt-1">
                   (Niki)
@@ -187,7 +187,7 @@ const ContactModal = ({ onClose }) => {
                   Location
                 </p>
                 <p className="text-[12px] tracking-[1px] text-black/60">
-                  The Hague
+                  The Hague,
                 </p>
                 <p className="text-[12px] tracking-[1px] text-black/60 mt-1">
                   Netherlands
@@ -222,7 +222,9 @@ const ContactModal = ({ onClose }) => {
             className="absolute top-26 right-28 lg:right-29.5 z-10 font-body text-[20px] leading-relaxed tracking-[1px] text-black/50 max-w-xs text-right font-light"
             {...fade(0.1)}
           >
-            For any enquiry or just to say hello reach out here!
+            For any enquiry or just to
+            <br />
+            say hello - reach out here!
           </motion.p>
 
           <div className="relative z-10 w-full max-w-xl mr-28 lg:mr-30 text-right">
@@ -274,7 +276,7 @@ const ContactModal = ({ onClose }) => {
                   Location
                 </p>
                 <p className="text-[11px] tracking-[1px] text-black/60">
-                  The Hague
+                  The Hague,
                 </p>
                 <p className="text-[11px] tracking-[1px] text-black/60 mt-1">
                   Netherlands
