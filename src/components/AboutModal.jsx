@@ -62,22 +62,22 @@ const AboutModal = ({ onClose }) => {
               onUpdate: () => {
                 const p = proxy.p;
 
-                // h1 moves up: 0→0.5 maps to y 0→-350
+                // h1 moves up: 0→0.5 maps to y 0→-150
                 const h1Y = gsap.utils.interpolate(
                   0,
-                  -350,
+                  -150,
                   gsap.utils.clamp(0, 1, p / 0.5),
                 );
-                // text scrolls out: 0.05→1 maps to y 0→-550
+                // text scrolls out: 0.05→1 maps to y 0→-200
                 const textP = gsap.utils.clamp(0, 1, (p - 0.05) / 0.95);
-                const textY = gsap.utils.interpolate(0, -550, textP);
-                // padding shrinks: 0→0.3 maps to 200→40
+                const textY = gsap.utils.interpolate(0, -200, textP);
+                // padding shrinks: 0→0.3 maps to 120→40
                 const padP = gsap.utils.clamp(0, 1, p / 0.3);
-                const textPad = gsap.utils.interpolate(200, 40, padP);
-                // logo + photo: 0.05→1 maps to y 0→-750
+                const textPad = gsap.utils.interpolate(120, 40, padP);
+                // logo + photo: 0.05→1 maps to y 0→-250
                 const logoP = gsap.utils.clamp(0, 1, (p - 0.05) / 0.95);
-                const logoY = gsap.utils.interpolate(0, -750, logoP);
-                const photoY = gsap.utils.interpolate(0, -750, logoP);
+                const logoY = gsap.utils.interpolate(0, -250, logoP);
+                const photoY = gsap.utils.interpolate(0, -250, logoP);
 
                 gsap.set(h1Ref.current, { y: h1Y });
                 gsap.set(textRef.current, { y: textY, paddingTop: textPad });
@@ -251,10 +251,10 @@ const AboutModal = ({ onClose }) => {
       {isMobile ? (
         <>
           {/* Mobile: heading + text together */}
-          <div className="relative px-6 min-h-[75vh] flex flex-col justify-center mt-20">
+          <div className="relative px-6 flex flex-col justify-center mt-12">
             <h1
               ref={h1Ref}
-              className="font-lunette text-[7.5rem] uppercase leading-none tracking-wide text-black/90"
+              className="font-lunette text-[3.5rem] sm:text-[5rem] uppercase leading-none tracking-wide text-black/90"
             >
               Where strategy
               <br />
@@ -263,7 +263,7 @@ const AboutModal = ({ onClose }) => {
 
             <p
               ref={textRef}
-              className="text-sm text-black/60 leading-[1.8] tracking-wide mt-4 max-w-[720px]"
+              className="text-xs sm:text-sm text-black/60 leading-[1.8] tracking-wide mt-4"
             >
               I started my career in design the way most people don't - by
               designing a logo for a solar-powered international car race
@@ -324,7 +324,7 @@ const AboutModal = ({ onClose }) => {
             {/* Sparkle 1 — tracks h1 */}
             <img
               ref={sparkle1Ref}
-              src="/images/sparkle.png"
+              src="/images/sta2.png"
               alt=""
               className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 opacity-30 scale-50"
               aria-hidden="true"
@@ -332,7 +332,7 @@ const AboutModal = ({ onClose }) => {
             {/* Sparkle 2 — tracks paragraph */}
             <img
               ref={sparkle2Ref}
-              src="/images/sparkle.png"
+              src="/images/sta3.png"
               alt=""
               className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 opacity-30 scale-50"
               aria-hidden="true"
@@ -340,17 +340,17 @@ const AboutModal = ({ onClose }) => {
             {/* Sparkle 3 — tracks logo */}
             <img
               ref={sparkle3Ref}
-              src="/images/sparkle.png"
+              src="/images/sta4.png"
               alt=""
               className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 opacity-30 scale-50"
               aria-hidden="true"
             />
           </div>
 
-          <div className="px-6 md:px-12 lg:px-16 overflow-hidden min-h-[80vh] flex flex-col items-start justify-center pt-40">
+          <div className="px-6 md:px-12 lg:px-16 overflow-hidden flex flex-col items-start justify-start pt-24 pb-8">
             <h1
               ref={h1Ref}
-              className="font-lunette text-[7rem] md:text-[9rem] lg:text-[11rem] uppercase leading-none tracking-wide text-black/90 -mb-6 md:-mb-10 relative z-20 mx-auto"
+              className="font-lunette text-[7rem] md:text-[9rem] lg:text-[11rem] uppercase leading-none tracking-wide text-black/90 -mb-6 md:-mb-10 relative z-20 mx-auto text-left"
             >
               Where strategy
               <br />
@@ -359,8 +359,8 @@ const AboutModal = ({ onClose }) => {
 
             <div
               ref={textRef}
-              className="max-w-[720px] relative z-10 mx-auto"
-              style={{ paddingTop: 200 }}
+              className="w-[85%] relative z-10 mx-auto"
+              style={{ paddingTop: 120 }}
             >
               <p className="text-sm md:text-base text-black/60 leading-[1.8] tracking-wide">
                 I started my career in design the way most people don't - by
@@ -392,7 +392,7 @@ const AboutModal = ({ onClose }) => {
 
             <img
               ref={logoRef}
-              className="relative z-50 mt-30 w-[40%] md:w-[35%] ml-auto mr-4 md:mr-6"
+              className="relative z-50 mt-16 w-[40%] md:w-[35%] ml-auto mr-4 md:mr-6"
               src="/images/niki-logo-text-black.webp"
               alt="Nikoletta"
             />
@@ -402,15 +402,6 @@ const AboutModal = ({ onClose }) => {
               className="relative z-40 -mt-3 md:-mt-6 w-32 md:w-40 rounded-lg object-contain ml-auto mr-10 md:mr-12"
               src="/images/about.webp"
               alt="Nikoletta Kalmar"
-              loading="lazy"
-              decoding="async"
-            />
-
-            {/* Thanks text — bottom left */}
-            <img
-              src="/images/thanks.png"
-              alt="thanks"
-              className="w-[35%] md:w-[15%] mt-16 mb-4 ml-10"
               loading="lazy"
               decoding="async"
             />
