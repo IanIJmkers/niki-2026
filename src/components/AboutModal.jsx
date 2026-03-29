@@ -298,7 +298,7 @@ const AboutModal = ({ onClose }) => {
             <img
               ref={photoRef}
               className="relative z-0 -mt-2 w-32 ml-10 rounded-lg object-contain"
-              src="/images/about.webp"
+              src="/images/portrait.webp"
               alt="Nikoletta Kalmar"
               loading="lazy"
               decoding="async"
@@ -399,8 +399,8 @@ const AboutModal = ({ onClose }) => {
 
             <img
               ref={photoRef}
-              className="relative z-40 -mt-3 md:-mt-6 w-32 md:w-40 rounded-lg object-contain ml-auto mr-10 md:mr-12"
-              src="/images/about.webp"
+              className="relative z-40 -mt-3 md:-mt-6 w-32 md:w-40 rounded-lg object-contain ml-auto mr-10 md:mr-15"
+              src="/images/portrait.webp"
               alt="Nikoletta Kalmar"
               loading="lazy"
               decoding="async"

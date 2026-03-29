@@ -94,7 +94,7 @@ const CustomCursor = () => {
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <motion.div
-                className="w-12 h-12"
+                className="w-8 h-8"
                 style={sparkleStyle}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
@@ -103,7 +103,7 @@ const CustomCursor = () => {
           ) : (
             <motion.div
               key="default"
-              className="w-12 h-12"
+              className="w-8 h-8"
               style={sparkleStyle}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}

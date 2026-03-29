@@ -15,7 +15,7 @@ const SpoiledLayout = ({ project }) => {
   return (
     <>
       {/* Row 1 — glitchy red (img3) + text page (img2) side by side */}
-      <div className="px-5 md:px-20 lg:px-30 mt-6 flex flex-col md:flex-row gap-10">
+      <div className="px-5 md:px-20 lg:px-30 mt-6 md:mt-20 flex flex-col md:flex-row gap-10">
         <motion.div className=" overflow-hidden md:w-1/2" {...anim()}>
           <GalleryMedia
             item={img3}
@@ -59,7 +59,7 @@ const SpoiledLayout = ({ project }) => {
       {/* Description */}
       {project.description && (
         <motion.p
-          className="px-3 md:px-1 lg:px-1 mt-10 md:mt-30 mb-6 text-[11px] md:text-[16px] leading-relaxed text-black/50 max-w-2xl text-center mx-auto italic"
+          className="px-5 md:px-20 lg:px-30 mt-10 md:mt-30 mb-6 text-[11px] md:text-[16px] leading-relaxed text-black/50 max-w-2xl text-justify mx-auto italic"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
