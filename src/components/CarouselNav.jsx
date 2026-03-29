@@ -9,7 +9,7 @@ const CarouselNav = () => {
 
   return (
     <motion.nav
-      className="fixed bottom-2 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 md:gap-4"
+      className="fixed bottom-2 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 md:gap-4"
       aria-label="Portfolio navigation"
       initial={{ opacity: introPhase === "complete" ? 1 : 0 }}
       animate={{ opacity: showNav ? 1 : 0 }}
