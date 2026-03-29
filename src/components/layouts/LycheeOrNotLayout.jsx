@@ -37,7 +37,7 @@ const LycheeOrNotLayout = ({ project }) => {
 
       {/* Second image */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 overflow-hidden mb-10"
+        className="px-5 md:px-20 lg:px-30 overflow-hidden mb-6"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}

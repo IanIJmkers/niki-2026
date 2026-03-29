@@ -52,7 +52,7 @@ const ProjectModal = ({ slug, onClose, onOpenModal }) => {
       <Layout project={project} />
 
       {/* Footer actions */}
-      <div className="flex items-center justify-center gap-6 py-8 pb-12 md:py-12">
+      <div className="flex items-center justify-center gap-6 py-8 pb-6 md:py-12">
         <button
           onClick={scrollToTop}
           className="flex items-center gap-2 text-[9px] tracking-[3px] uppercase text-black/30 hover:text-black/60 transition-colors"
