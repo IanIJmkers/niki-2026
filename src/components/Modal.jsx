@@ -35,7 +35,7 @@ const Modal = ({ children, onClose, title = "Untitled", contentRef, bg }) => {
         onDragEnd={() => setIsDragging(false)}
       >
         <div
-          className={`w-[92vw] max-w-[1100px] max-h-[92vh] flex flex-col rounded-2xl shadow-[0_8px_60px_rgba(0,0,0,0.25)] overflow-hidden`}
+          className={`w-[92vw] max-w-[1100px] max-h-[85vh] md:max-h-[92vh] flex flex-col rounded-2xl shadow-[0_8px_60px_rgba(0,0,0,0.25)] overflow-hidden`}
           data-cursor-dark
           style={{
             background: bg || "rgba(255, 255, 255, 1)",
@@ -67,7 +67,7 @@ const Modal = ({ children, onClose, title = "Untitled", contentRef, bg }) => {
           </div>
 
           {/* Scrollable content */}
-          <div ref={contentRef} className="overflow-y-auto overflow-x-clip overscroll-contain flex-1">
+          <div ref={contentRef} className="overflow-y-auto overflow-x-clip overscroll-contain flex-1 pb-[env(safe-area-inset-bottom)]">
             {children}
           </div>
         </div>

@@ -9,7 +9,7 @@ const CarouselNav = () => {
 
   return (
     <motion.nav
-      className="fixed bottom-2 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 md:gap-4"
+      className="fixed bottom-2 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 md:gap-4"
       aria-label="Portfolio navigation"
       initial={{ opacity: introPhase === "complete" ? 1 : 0 }}
       animate={{ opacity: showNav ? 1 : 0 }}
@@ -24,14 +24,14 @@ const CarouselNav = () => {
           aria-current={activeIndex === i ? "true" : undefined}
         >
           <motion.div
-            className="w-1.5 h-1.5 rounded-full"
+            className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full"
             animate={{
               backgroundColor:
                 activeIndex === i ? "#ffffff" : "rgba(255,255,255,0.3)",
             }}
             transition={{ duration: 0.3 }}
           />
-          <span className="text-[6px] md:text-[7px] tracking-[1.5px] uppercase text-transparent group-hover:text-white/70 transition-colors duration-300 whitespace-nowrap">
+          <span className="hidden md:block text-[7px] tracking-[1.5px] uppercase text-transparent group-hover:text-white/70 transition-colors duration-300 whitespace-nowrap">
             {project.title}
           </span>
         </button>
