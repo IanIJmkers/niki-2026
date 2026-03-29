@@ -25,7 +25,7 @@ const LycheeOrNotLayout = ({ project }) => {
       {/* Description — between images */}
       {project.description && (
         <motion.p
-          className="px-3 md:px-1 lg:px-1  mb-25 text-[11px] md:text-[16px] leading-relaxed text-black/50 max-w-2xl text-center mx-auto italic"
+          className="px-3 md:px-1 lg:px-1 mb-10 mt-10 md:mb-25 text-[11px] md:text-[16px] leading-relaxed text-black/50 max-w-2xl text-center mx-auto italic"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -37,7 +37,7 @@ const LycheeOrNotLayout = ({ project }) => {
 
       {/* Second image */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 overflow-hidden mb-15"
+        className="px-5 md:px-20 lg:px-30 overflow-hidden mb-10"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}

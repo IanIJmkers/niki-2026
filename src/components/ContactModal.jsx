@@ -115,7 +115,7 @@ const ContactModal = ({ onClose }) => {
           {/* Content — stacked vertically */}
           <div className="relative z-10 px-6 pt-22 pb-12">
             <motion.p
-              className="font-body uppercase text-[17px] leading-relaxed tracking-[1px] text-black/50 font-light mb-10 text-right"
+              className="font-body uppercase text-[14px] leading-relaxed tracking-[1px] text-black/50 font-light mb-10 text-right"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{

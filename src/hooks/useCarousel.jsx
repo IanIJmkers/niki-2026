@@ -44,12 +44,6 @@ export const CarouselProvider = ({ children, introPhase, onOpenModal }) => {
       rawPosition.set(rawPosition.get() + delta);
 
       if (snapTimeoutRef.current) clearTimeout(snapTimeoutRef.current);
-      snapTimeoutRef.current = setTimeout(() => {
-        animate(rawPosition, Math.round(rawPosition.get()), {
-          type: "spring",
-          ...SPRING,
-        });
-      }, 150);
     },
     [rawPosition, introPhase]
   );

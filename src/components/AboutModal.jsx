@@ -263,7 +263,7 @@ const AboutModal = ({ onClose }) => {
 
             <p
               ref={textRef}
-              className="text-xs sm:text-sm text-black/60 leading-[1.8] tracking-wide mt-4"
+              className="text-xs sm:text-sm text-black/60 leading-[1.8] tracking-wide mt-8 mb-4"
             >
               I started my career in design the way most people don't - by
               designing a logo for a solar-powered international car race

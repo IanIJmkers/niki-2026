@@ -19,7 +19,12 @@ const CustomCursor = () => {
   const y = useSpring(cursorY, { stiffness: 800, damping: 40, mass: 0.2 });
 
   useEffect(() => {
-    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+    if (
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.innerWidth < 768 ||
+      window.matchMedia("(pointer: coarse)").matches
+    ) {
       setIsTouchDevice(true);
       return;
     }

@@ -9,7 +9,7 @@ const MadameFleurineLayout = ({ project }) => {
     <>
       {/* Row 1 — full-width image 1 */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 mt-20 mb-40 overflow-hidden"
+        className="px-5 md:px-20 lg:px-30 mt-6 md:mt-20 mb-10 md:mb-40 overflow-hidden"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
@@ -24,7 +24,7 @@ const MadameFleurineLayout = ({ project }) => {
 
       {/* Row 2 — full-width image 2 */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 mb-30 md:mt-3 overflow-hidden"
+        className="px-5 md:px-20 lg:px-30 mb-9 md:mb-30 md:mt-3 overflow-hidden"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
@@ -40,7 +40,7 @@ const MadameFleurineLayout = ({ project }) => {
       {/* Description */}
       {project.description && (
         <motion.p
-          className="px-3 md:px-1 lg:px-1 mt-30 mb-30 text-[11px] md:text-[16px] leading-relaxed text-black/50 max-w-2xl text-center mx-auto italic"
+          className="px-3 md:px-1 lg:px-1 mt-10 md:mt-30 mb-10 md:mb-30 text-[11px] md:text-[16px] leading-relaxed text-black/50 max-w-2xl text-center mx-auto italic"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -52,7 +52,7 @@ const MadameFleurineLayout = ({ project }) => {
 
       {/* Row 3 — full-width image 3 */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 mt-2 mb-20 md:mt-3 overflow-hidden"
+        className="px-5 md:px-20 lg:px-30 mt-2 mb-9 md:mt-3 overflow-hidden"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
@@ -63,7 +63,7 @@ const MadameFleurineLayout = ({ project }) => {
 
       {/* Row 4 — full-width image 4 */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 mb-20 overflow-hidden"
+        className="px-5 md:px-20 lg:px-30 mb-9 overflow-hidden"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
@@ -74,7 +74,7 @@ const MadameFleurineLayout = ({ project }) => {
 
       {/* Row 5 — full-width image 5 */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 mt-2 md:mt-3 overflow-hidden mb-20"
+        className="px-5 md:px-20 lg:px-30 mt-2 md:mt-3 overflow-hidden mb-9"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
@@ -85,24 +85,13 @@ const MadameFleurineLayout = ({ project }) => {
 
       {/* Row 6 — full-width image 6 */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 overflow-hidden mb-20"
+        className="px-5 md:px-20 lg:px-30 overflow-hidden mb-9"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.6, ease: easeOutQuart }}
       >
         <GalleryMedia item={img6} alt={`${project.title} — 6`} loading="lazy" />
-      </motion.div>
-
-      {/* Row 7 — full-width image 7 */}
-      <motion.div
-        className="px-5 md:px-20 lg:px-30 overflow-hidden mb-15"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.6, ease: easeOutQuart }}
-      >
-        <GalleryMedia item={img7} alt={`${project.title} — 7`} loading="lazy" />
       </motion.div>
     </>
   );

@@ -24,9 +24,8 @@ const CarouselNav = () => {
           aria-current={activeIndex === i ? "true" : undefined}
         >
           <motion.div
-            className="h-px rounded-full"
+            className="w-1.5 h-1.5 rounded-full"
             animate={{
-              width: activeIndex === i ? 24 : 16,
               backgroundColor:
                 activeIndex === i ? "#ffffff" : "rgba(255,255,255,0.3)",
             }}
