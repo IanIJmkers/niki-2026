@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nikoletta Kalmar</title>
+    <meta
+      name="description"
+      content="Nikoletta Kalmar — Transformative Designer. Where strategy becomes design."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nikolettakalmar.com" />
+    <meta property="og:title" content="Nikoletta Kalmar" />
+    <meta
+      property="og:description"
+      content="Transformative designer — where strategy becomes design."
+    />
+    <meta
+      property="og:image"
+      content="https://nikolettakalmar.com/images/og-preview.png"
+    />
+    <style>
+      @font-face {
+        font-family: "Lunette";
+        src: url("https://nikolettakalmar.com/fonts/Lunette.woff2")
+          format("woff2");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        background: #000;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Globe background */
+      .globe-bg {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .globe-bg img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 106%;
+        height: 100%;
+        object-fit: cover;
+        transform: translateX(-3.6%);
+        opacity: 0;
+        animation: fadeInGlobe 1.5s ease-out 0.3s forwards;
+      }
+
+      /* Noise overlay */
+      .noise {
+        pointer-events: none;
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 256px 256px;
+      }
+
+      /* Centered link wrapper */
+      .cta {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        animation: fadeInCta 0.8s ease-out 2.5s forwards;
+      }
+
+      .cta a {
+        font-family: "Lunette", serif;
+        font-size: clamp(2rem, 5vw, 2.4rem);
+        font-weight: 100;
+        color: rgb(233, 229, 160);
+        text-transform: lowercase;
+        letter-spacing: 3px;
+        transform: scaleY(0.9);
+        text-decoration: none;
+        transition:
+          font-style 0.3s ease,
+          text-decoration 0.3s ease;
+        cursor: pointer;
+      }
+
+      .cta a:hover {
+        font-style: italic;
+        text-decoration: underline;
+        text-underline-offset: 6px;
+        text-decoration-thickness: 1px;
+      }
+
+      /* Tooltip */
+      .tooltip {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .tooltip span {
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(250, 250, 248, 0.4);
+      }
+
+      .tooltip .arrow {
+        font-size: 0.75rem;
+        color: rgba(250, 250, 248, 0.4);
+        animation: bounce 1s ease-in-out infinite;
+      }
+
+      /* Animations */
+      @keyframes fadeInGlobe {
+        to {
+          opacity: 0.7;
+        }
+      }
+
+      @keyframes fadeInCta {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Globe background -->
+    <div class="globe-bg">
+      <img
+        src="https://nikolettakalmar.com/images/globes.webp"
+        alt=""
+        aria-hidden="true"
+      />
+    </div>
+
+    <!-- Centered clickable text -->
+    <div class="cta">
+      <a href="https://nikolettakalmar.com" target="_blank" rel="noopener"
+        >nikolettakalmar.com</a
+      >
+      <div class="tooltip">
+        <span class="arrow">&uarr;</span>
+        <span>portfolio</span>
+      </div>
+    </div>
+
+    <!-- Noise overlay -->
+    <div class="noise" aria-hidden="true"></div>
+  </body>
+</html>

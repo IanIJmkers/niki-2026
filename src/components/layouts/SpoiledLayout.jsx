@@ -59,7 +59,7 @@ const SpoiledLayout = ({ project }) => {
       {/* Description */}
       {project.description && (
         <motion.p
-          className="px-5 md:px-20 lg:px-30 mt-10 md:mt-30 mb-6 text-[11px] md:text-[16px] leading-relaxed text-black/50 text-justify italic"
+          className="px-5 md:px-20 lg:px-45 mt-10 md:mt-22 mb-6 text-[11px] md:text-[16px] leading-relaxed text-black/50 text-justify italic"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

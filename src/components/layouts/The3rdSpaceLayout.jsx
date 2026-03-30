@@ -9,7 +9,7 @@ const The3rdSpaceLayout = ({ project }) => {
     <>
       {/* third-1 — hero, center stage */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 mt-6 overflow-hidden"
+        className="px-5 md:px-20 lg:px-30 mt-6 md:mt-20 overflow-hidden"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
@@ -25,7 +25,7 @@ const The3rdSpaceLayout = ({ project }) => {
       {/* Description */}
       {project.description && (
         <motion.p
-          className="px-5 md:px-20 lg:px-30 mt-10 md:mt-30 mb-10 md:mb-30 text-[11px] md:text-[16px] leading-relaxed text-black/50 text-justify italic"
+          className="px-5 md:px-20 lg:px-45 mt-10 md:mt-22 mb-10 md:mb-22 text-[11px] md:text-[16px] leading-relaxed text-black/50 text-justify italic"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -48,7 +48,7 @@ const The3rdSpaceLayout = ({ project }) => {
 
       {/* third-3 */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 mt-12 md:mt-40 overflow-hidden mb-6"
+        className="px-5 md:px-20 lg:px-30 mt-12 md:mt-37 overflow-hidden mb-6"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}

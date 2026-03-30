@@ -33,7 +33,7 @@ export const projects = [
       { id: 2, src: "/images/spoiled-1.webp" },
       { id: 3, src: "/images/spoiled-2.webp" },
       { id: 4, src: "/images/spoiled-3.webp" },
-      { id: 5, src: "/images/spoiled-4.webp" },
+      { id: 5, src: "/images/spoiled-4.jpg" },
       { id: 6, src: "/images/spoiled-5.webp" },
     ],
   },

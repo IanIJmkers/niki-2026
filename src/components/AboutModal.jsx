@@ -258,12 +258,12 @@ const AboutModal = ({ onClose }) => {
             >
               Where strategy
               <br />
-              becomes design
+              becomes design<span className="font-athelas text-[0.4em] text-black">,</span>
             </h1>
 
             <p
               ref={textRef}
-              className="text-xs sm:text-sm text-black/60 leading-[1.8] tracking-wide mt-8 mb-4"
+              className="text-xs sm:text-sm text-black/60 leading-[1.8] tracking-wide mt-8 mb-4 text-justify"
             >
               I started my career in design the way most people don't - by
               designing a logo for a solar-powered international car race
@@ -354,7 +354,7 @@ const AboutModal = ({ onClose }) => {
             >
               Where strategy
               <br />
-              becomes design
+              becomes design<span className="font-athelas text-[0.4em] text-black">,</span>
             </h1>
 
             <div
@@ -362,7 +362,7 @@ const AboutModal = ({ onClose }) => {
               className="w-[85%] relative z-10 mx-auto"
               style={{ paddingTop: 120 }}
             >
-              <p className="text-sm md:text-base text-black/60 leading-[1.8] tracking-wide">
+              <p className="text-sm md:text-base text-black/60 leading-[1.8] tracking-wide text-justify">
                 I started my career in design the way most people don't - by
                 designing a logo for a solar-powered international car race
                 competition. These days the projects are less solar-powered but
@@ -399,7 +399,7 @@ const AboutModal = ({ onClose }) => {
 
             <img
               ref={photoRef}
-              className="relative z-40 -mt-3 md:-mt-6 w-32 md:w-40 rounded-lg object-contain ml-auto mr-10 md:mr-15"
+              className="relative z-40 -mt-3 md:-mt-6 w-32 md:w-40 rounded-lg object-contain ml-auto mr-10 md:mr-16.5"
               src="/images/portrait.webp"
               alt="Nikoletta Kalmar"
               loading="lazy"
