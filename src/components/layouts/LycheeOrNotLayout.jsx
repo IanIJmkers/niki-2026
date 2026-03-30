@@ -2,18 +2,22 @@ import { motion } from "framer-motion";
 import { easeOutQuart } from "../../animations/variants";
 import GalleryMedia from "../GalleryMedia";
 
+const anim = (delay = 0) => ({
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-40px" },
+  transition: { duration: 0.6, delay, ease: easeOutQuart },
+});
+
 const LycheeOrNotLayout = ({ project }) => {
-  const [img1, img2] = project.gallery;
+  const [img1, ...rest] = project.gallery;
 
   return (
     <>
       {/* First image */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 overflow-hidden"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.6, ease: easeOutQuart }}
+        className="px-5 md:px-20 lg:px-30 mt-6 md:mt-20 overflow-hidden"
+        {...anim()}
       >
         <GalleryMedia
           item={img1}
@@ -22,10 +26,10 @@ const LycheeOrNotLayout = ({ project }) => {
         />
       </motion.div>
 
-      {/* Description — between images */}
+      {/* Description — after first image */}
       {project.description && (
         <motion.p
-          className="px-5 md:px-20 lg:px-45 mb-10 mt-10 md:mb-25 text-[11px] md:text-[16px] leading-relaxed text-black/50 text-justify italic"
+          className="px-5 md:px-20 lg:px-45 mb-10 mt-10 md:mb-22 md:mt-22 text-[11px] md:text-[16px] leading-relaxed text-black/50 text-justify italic"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -35,16 +39,20 @@ const LycheeOrNotLayout = ({ project }) => {
         </motion.p>
       )}
 
-      {/* Second image */}
-      <motion.div
-        className="px-5 md:px-20 lg:px-30 overflow-hidden mb-6"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.6, ease: easeOutQuart }}
-      >
-        <GalleryMedia item={img2} alt={`${project.title} — 2`} loading="lazy" />
-      </motion.div>
+      {/* Remaining images */}
+      {rest.map((img, i) => (
+        <motion.div
+          key={img.id}
+          className="px-5 md:px-20 lg:px-30 mb-9 md:-mb-10 overflow-hidden"
+          {...anim()}
+        >
+          <GalleryMedia
+            item={img}
+            alt={`${project.title} — ${i + 2}`}
+            loading="lazy"
+          />
+        </motion.div>
+      ))}
     </>
   );
 };

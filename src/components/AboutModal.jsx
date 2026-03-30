@@ -258,7 +258,8 @@ const AboutModal = ({ onClose }) => {
             >
               Where strategy
               <br />
-              becomes design<span className="font-athelas text-[0.4em] text-black">,</span>
+              becomes design
+              <span className="font-athelas text-[0.4em] text-black">,</span>
             </h1>
 
             <p
@@ -354,7 +355,8 @@ const AboutModal = ({ onClose }) => {
             >
               Where strategy
               <br />
-              becomes design<span className="font-athelas text-[0.4em] text-black">,</span>
+              <span className="inline-block pl-2">becomes design</span>
+              <span className="font-athelas text-[0.4em] text-black">,</span>
             </h1>
 
             <div
