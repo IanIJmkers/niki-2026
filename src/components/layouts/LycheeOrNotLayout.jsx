@@ -40,19 +40,23 @@ const LycheeOrNotLayout = ({ project }) => {
       )}
 
       {/* Remaining images */}
-      {rest.map((img, i) => (
-        <motion.div
-          key={img.id}
-          className="px-5 md:px-20 lg:px-30 mb-9 md:-mb-10 overflow-hidden"
-          {...anim()}
-        >
-          <GalleryMedia
-            item={img}
-            alt={`${project.title} — ${i + 2}`}
-            loading="lazy"
-          />
-        </motion.div>
-      ))}
+      {rest.map((img, i) => {
+        const isImg14 = i === rest.length - 3;
+        const isLastTwo = i >= rest.length - 2;
+        return (
+          <motion.div
+            key={img.id}
+            className={`px-5 md:px-20 lg:px-30 mb-9 md:-mb-10 overflow-hidden ${isImg14 ? "mt-6 md:mt-9" : isLastTwo ? "mt-6 md:mt-20" : ""}`}
+            {...anim()}
+          >
+            <GalleryMedia
+              item={img}
+              alt={`${project.title} — ${i + 2}`}
+              loading="lazy"
+            />
+          </motion.div>
+        );
+      })}
     </>
   );
 };
