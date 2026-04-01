@@ -42,11 +42,12 @@ const LycheeOrNotLayout = ({ project }) => {
       {/* Remaining images */}
       {rest.map((img, i) => {
         const isImg14 = i === rest.length - 3;
-        const isLastTwo = i >= rest.length - 2;
+        const isSecondLast = i === rest.length - 2;
+        const isLast = i === rest.length - 1;
         return (
           <motion.div
             key={img.id}
-            className={`px-5 md:px-20 lg:px-30 -mb-4 md:-mb-10 overflow-hidden ${isImg14 ? "mt-5 mx-3.5 md:mt-9 md:mx-9 mb-1" : isLastTwo ? "mt-5 mx-3.5 mb-4 md:mb-15 md:mt-20 md:mx-9" : ""}`}
+            className={`px-5 md:px-20 lg:px-30 -mb-4 md:-mb-10 overflow-hidden ${isImg14 ? "mt-5 mx-3.5 md:mt-40 md:mx-9 mb-1" : isSecondLast ? "mt-5 mx-3.5 mb-4 md:mb-12 md:mt-52 md:mx-9" : isLast ? "mt-5 mx-3.5 mb-4 md:mb-15 md:mt-40 md:mx-9" : ""}`}
             {...anim()}
           >
             <GalleryMedia
