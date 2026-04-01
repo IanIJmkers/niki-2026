@@ -48,7 +48,7 @@ const The3rdSpaceLayout = ({ project }) => {
 
       {/* third-3 */}
       <motion.div
-        className="px-5 md:px-20 lg:px-30 mt-12 md:mt-37 overflow-hidden mb-6"
+        className="px-5 md:px-20 lg:px-30 mt-12 md:mt-37 overflow-hidden mb-6 md:mb-15"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}

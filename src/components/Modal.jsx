@@ -22,7 +22,7 @@ const Modal = ({ children, onClose, title = "Untitled", contentRef, bg }) => {
       {/* Draggable window — no constraints, can be dragged freely */}
       <motion.div
         className="fixed z-[70] pointer-events-auto"
-        style={{ top: "3%", left: "50%", x: "-50%" }}
+        style={{ top: isMobile ? "calc(env(safe-area-inset-top) + 6%)" : "3%", left: "50%", x: "-50%" }}
         drag={!isMobile}
         dragControls={dragControls}
         dragListener={false}
