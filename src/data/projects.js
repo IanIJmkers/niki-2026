@@ -39,13 +39,13 @@ export const projects = [
   },
   {
     id: 3,
-    slug: "madame-fleurine",
-    title: "madame fleurine",
+    slug: "madame-fleurie",
+    title: "madame fleurie",
     displayTitle: "Conceptual Design",
     date: "2024",
     subtitle: "Brand Identity / 2024",
     description:
-      "Madame Fleurine was a comprehensive packaging and branding project that challenged me to step beyond personal artistic exploration and into the world of client-driven design. Having the opportunity to work alongside an experienced team of professionals for this project highlighted my strengths and capabilities in the nature of design practice. This project required a deep understanding of the business's identity, translating a client's vision into a cohesive visual language across packaging, branding, and marketing materials. My role involved contributing to the early stages of concept development, brainstorming aesthetics, and visual directions that later evolved into a fully realized design proposal. ",
+      "Madame Fleurie was a comprehensive packaging and branding project that challenged me to step beyond personal artistic exploration and into the world of client-driven design. Having the opportunity to work alongside an experienced team of professionals for this project highlighted my strengths and capabilities in the nature of design practice. This project required a deep understanding of the business's identity, translating a client's vision into a cohesive visual language across packaging, branding, and marketing materials. My role involved contributing to the early stages of concept development, brainstorming aesthetics, and visual directions that later evolved into a fully realized design proposal. ",
     image: "/images/madame.webp",
     hoverImage: "/images/madame-hover.webp",
     gallery: [

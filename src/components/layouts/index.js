@@ -2,7 +2,7 @@ import The3rdSpaceLayout from "./The3rdSpaceLayout";
 import SpoiledLayout from "./SpoiledLayout";
 import LycheeOrNotLayout from "./LycheeOrNotLayout";
 import SpinalFractureLayout from "./SpinalFractureLayout";
-import MadameFleurineLayout from "./MadameFleurineLayout";
+import MadameFleurieLayout from "./MadameFleurieLayout";
 import LiminalLayout from "./LiminalLayout";
 
 export const projectLayouts = {
@@ -10,6 +10,6 @@ export const projectLayouts = {
   spoiled: SpoiledLayout,
   "lychee-or-not": LycheeOrNotLayout,
   "spinal-fracture": SpinalFractureLayout,
-  "madame-fleurine": MadameFleurineLayout,
+  "madame-fleurie": MadameFleurieLayout,
   liminal: LiminalLayout,
 };
